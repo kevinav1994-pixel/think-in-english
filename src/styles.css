@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    background:
+      radial-gradient(circle at top left, rgba(245, 231, 193, 0.72), transparent 26%),
+      radial-gradient(circle at top right, rgba(234, 244, 250, 0.82), transparent 24%),
+      linear-gradient(180deg, #fff8f0 0%, #fefbf6 42%, #f9f0e3 100%);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.15;
+    background-image:
+      linear-gradient(rgba(1, 54, 72, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(1, 54, 72, 0.04) 1px, transparent 1px);
+    background-size: 120px 120px;
+    mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+  }
+
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 82px;
+    }
+  }
+}
+
+@layer components {
+  .section-shell {
+    position: relative;
+  }
+
+  .section-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.44), transparent 20%),
+      radial-gradient(circle at 85% 85%, rgba(219, 229, 239, 0.22), transparent 28%);
+    opacity: 0.8;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 0 1px rgba(173, 151, 89, 0.18), 0 16px 44px rgba(173, 151, 89, 0.18);
+  }
+
+  .shimmer-line::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 32%, rgba(255,255,255,0.72) 50%, transparent 68%);
+    transform: translateX(-130%);
+    transition: transform 0.8s ease;
+    pointer-events: none;
+  }
+
+  .shimmer-line:hover::before {
+    transform: translateX(130%);
+  }
+
+  .marquee-track {
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-wrap:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
