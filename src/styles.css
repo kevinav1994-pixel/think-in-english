@@ -39,11 +39,11 @@
   }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
-    background:
-      radial-gradient(circle at top left, rgb(var(--pastel-sky) / 0.72), transparent 26%),
-      radial-gradient(circle at top right, rgb(var(--gold-accent) / 0.12), transparent 24%),
-      linear-gradient(180deg, rgb(var(--soft-cream)) 0%, rgb(var(--soft-cream)) 42%, rgb(var(--pastel-sky) / 0.4) 100%);
+    @apply font-sans antialiased;
+    background-color: rgb(var(--deep-blue));
+    color: white;
+    background-image:
+      radial-gradient(circle at top left, rgb(var(--gold-accent) / 0.15), transparent 26%);
     overflow-x: hidden;
   }
 
@@ -54,8 +54,8 @@
     pointer-events: none;
     opacity: 0.15;
     background-image:
-      linear-gradient(rgb(var(--deep-blue) / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(var(--deep-blue) / 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 120px 120px;
     mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
   }
@@ -72,16 +72,7 @@
     position: relative;
   }
 
-  .section-shell::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.44), transparent 20%),
-      radial-gradient(circle at 85% 85%, rgba(219, 229, 239, 0.22), transparent 28%);
-    opacity: 0.8;
-  }
+
 
   .text-balance {
     text-wrap: balance;

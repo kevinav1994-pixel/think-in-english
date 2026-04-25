@@ -1,1 +1,5 @@
-﻿.cursor/
+.cursor/
+node_modules
+dist
+dist-ssr
+*.local

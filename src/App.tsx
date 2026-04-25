@@ -102,12 +102,12 @@ const navItems = [
 ] as const;
 
 const trustItems: TrustItem[] = [
-  { icon: "shield", text: "Honest feedback, no sugarcoating" },
-  { icon: "clock", text: "Classes that fit your life" },
-  { icon: "users", text: "I actually listen and correct you" },
-  { icon: "chat", text: "Stop translating in your head" },
-  { icon: "target", text: "Only practice what moves your score" },
-  { icon: "book", text: "I teach every class myself" }
+  { icon: "shield", text: "No artificial politeness—just clear, useful corrections." },
+  { icon: "clock", text: "We figure out a routine that you can actually stick to." },
+  { icon: "users", text: "I pay attention to the exact moments you stumble." },
+  { icon: "chat", text: "We break the habit of thinking in your native language." },
+  { icon: "target", text: "We focus entirely on what's actually holding your score back." },
+  { icon: "book", text: "You deal directly with me, every single time." }
 ];
 
 const aboutStats: AboutStat[] = [
@@ -243,7 +243,7 @@ const faqs = [
 ] as const;
 
 const heroMetrics = [
-  ["Never Outsourced", "I teach every class myself"],
+  ["Just you and me", "I take your progress personally. Every session, every correction, and every strategy comes directly from me."],
   ["Live Correction", "We fix issues as you speak"],
   ["No Crowded Batches", "1:1 and small precision groups"]
 ] as const;
@@ -318,23 +318,23 @@ function NavBar() {
   return (
     <motion.header
       animate={{ paddingTop: scrolled ? 8 : 18, paddingBottom: scrolled ? 8 : 18 }}
-      className="fixed inset-x-0 top-0 z-50"
+      className="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
     >
       <div className={pageContainer}>
         <div
           className={[
-            "flex items-center justify-between rounded-full border border-border/30 px-4 transition-all duration-300 md:px-6",
-            scrolled ? "bg-cream/75 py-2 shadow-card " : "bg-cream/45 py-3 "
+            "flex items-center justify-between rounded-full border px-4 transition-all duration-300 md:px-6",
+            scrolled ? "bg-navy/95 py-2 backdrop-blur-md border-white/10 shadow-sm" : "bg-transparent py-3 border-transparent"
           ].join(" ")}
         >
-          <a href="#" className="font-serif text-2xl tracking-[0.01em] text-navy">
+          <a href="#" className="font-serif text-2xl tracking-[0.01em] transition-colors text-white">
             <span className="text-gold">Think</span> in English
           </a>
           <nav className="hidden items-center gap-8 md:flex">
             {navItems.map(([label, href]) => (
-              <a key={label} href={href} className="group relative text-sm font-semibold text-ink/80 transition hover:text-navy">
-                <span className="inline-block transition-transform duration-300 group-">{label}</span>
-                <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-navy transition-transform duration-300 group-hover:scale-x-100" />
+              <a key={label} href={href} className="group relative text-sm font-semibold transition-colors text-white/80 hover:text-white">
+                <span className="inline-block transition-transform duration-300 group-hover:-translate-y-0.5">{label}</span>
+                <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 bg-white" />
               </a>
             ))}
           </nav>
@@ -342,7 +342,7 @@ function NavBar() {
             
             whileTap={{ scale: 0.99 }}
             href="#contact"
-            className="gold-glow inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-sm"
+            className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-sm transition-all gold-glow bg-primary text-primary-foreground hover:bg-primary/90"
           >
             Book Free Demo
             <Icon path={icons.arrow} className="h-4 w-4" />
@@ -359,9 +359,8 @@ function Hero() {
   const yParticle = useTransform(scrollY, [0, 500], [0, 24]);
 
   return (
-    <section className="relative overflow-hidden pb-12 pt-36 md:pb-20 md:pt-40">
-      <div className="absolute inset-x-0 top-0 h-[760px] bg-grain opacity-90" />
-          <motion.div
+    <section className="relative overflow-hidden pb-12 pt-36 md:pb-20 md:pt-40 bg-navy">
+      <motion.div
         animate={
           isE2E
             ? { opacity: 0.55, scale: 1 }
@@ -372,7 +371,7 @@ function Hero() {
             ? { duration: 0 }
             : { duration: 8, repeat: Infinity, ease: "easeInOut" }
         }
-        className="absolute left-[-12%] top-16 h-72 w-72 rounded-full bg-goldTint/70 blur-3xl"
+        className="absolute left-[-12%] top-16 h-72 w-72 rounded-full bg-goldTint/50 blur-3xl"
       />
       <motion.div
         animate={
@@ -385,42 +384,42 @@ function Hero() {
             ? { duration: 0 }
             : { duration: 9.5, repeat: Infinity, ease: "easeInOut" }
         }
-        className="absolute right-[-8%] top-20 h-80 w-80 rounded-full bg-accent/80 blur-3xl"
+        className="absolute right-[-8%] top-20 h-80 w-80 rounded-full bg-navy/80 blur-3xl"
       />
       <motion.div style={isE2E ? undefined : { y: yParticle }} className="absolute inset-0 hidden md:block">
         <span className="absolute left-[10%] top-[22%] h-2.5 w-2.5 rounded-full bg-gold/40 blur-[1px]" />
-        <span className="absolute left-[19%] top-[34%] h-1.5 w-1.5 rounded-full bg-navy/20" />
+        <span className="absolute left-[19%] top-[34%] h-1.5 w-1.5 rounded-full bg-white/20" />
         <span className="absolute right-[16%] top-[24%] h-3 w-3 rounded-full bg-goldTint/70 blur-[1px]" />
-        <span className="absolute right-[12%] top-[44%] h-1.5 w-1.5 rounded-full bg-navy/20" />
+        <span className="absolute right-[12%] top-[44%] h-1.5 w-1.5 rounded-full bg-white/20" />
       </motion.div>
 
       <div className={`relative ${pageContainer} grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-14`}>
         <motion.div initial="hidden" animate="show" variants={stagger} className="relative z-10">
-          <motion.div variants={fadeUp} className="mb-10 border-t-2 border-navy/20 pt-4 max-w-[280px]">
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-navy/70">
+          <motion.div variants={fadeUp} className="mb-10 border-t-2 border-white/20 pt-4 max-w-[280px]">
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/70">
               Founder-led mentoring &bull; Live online
             </p>
           </motion.div>
 
           <motion.h1
             variants={fadeUp}
-            className="text-balance max-w-3xl font-serif text-[3.6rem] leading-[1.05] tracking-[-0.02em] text-navy lg:text-[5.5rem]"
+            className="text-balance max-w-3xl font-serif text-[3.6rem] leading-[1.05] tracking-[-0.02em] text-white lg:text-[5.5rem]"
           >
             English isn't just grammar.
             <span className="block mt-1">
-              It’s how you shape your voice.
+              It’s how you <span className="text-gold">shape your voice.</span>
             </span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-8 max-w-2xl text-base leading-8 text-muted-foreground md:text-xl">
-            Real fluency doesn't happen in crowded batches. Whether you're aiming for an IELTS 8.0, preparing for Canada, or just want to stop translating in your head before you speak—I work with you until it clicks. No templates, just real coaching.
+          <motion.p variants={fadeUp} className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-xl">
+            You probably don't need a big institute or another generic textbook to get better. You just need someone to sit across from you, hear exactly where you stumble, and correct it right then and there. Whether you need a specific IELTS score or you just want to stop translating everything in your head before you speak—I'll just work with you until it finally clicks.
           </motion.p>
 
-          <motion.p variants={fadeUp} className="mt-5 text-sm font-semibold uppercase tracking-[0.22em] text-ink/55">
-            Your Voice, Amplified
+          <motion.p variants={fadeUp} className="mt-5 text-sm font-semibold uppercase tracking-[0.22em] text-white/50">
+            We're just fixing the hesitation
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-ink/80">
+          <motion.div variants={fadeUp} className="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-white/80">
             {["Live Classes", "Flexible Timings", "Personal Guidance"].map((item, index) => (
               <span key={item} className="flex items-center gap-3">
                 {item}
@@ -434,9 +433,9 @@ function Hero() {
               
               whileTap={{ scale: 0.99 }}
               href="#contact"
-              className="gold-glow inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground shadow-sm"
+              className="gold-glow inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-navy shadow-sm transition hover:bg-white/90"
             >
-              Let's Discuss Your Timeline
+              Let's figure out what's holding you back
               <Icon path={icons.arrow} className="h-4 w-4" />
             </motion.a>
             <motion.a
@@ -444,18 +443,18 @@ function Hero() {
               href="https://wa.me/919999999999"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-8 py-4 text-sm font-bold text-primary shadow-card "
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/10"
             >
-              Talk directly to me
+              Or just drop me a quick text
               <Icon path={icons.chat} className="h-4 w-4" />
             </motion.a>
           </motion.div>
 
           <motion.div variants={fadeUp} className="mt-8 grid gap-3 sm:grid-cols-3">
             {heroMetrics.map(([title, copy]) => (
-              <div key={title} className="rounded-xl border border-border/30 bg-white/55 p-4 shadow-card ">
-                <p className="text-sm font-bold text-navy">{title}</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{copy}</p>
+              <div key={title} className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+                <p className="text-sm font-bold text-white">{title}</p>
+                <p className="mt-2 text-sm leading-6 text-white/70">{copy}</p>
               </div>
             ))}
           </motion.div>
@@ -470,12 +469,12 @@ function Hero() {
           <motion.div
             style={isE2E ? undefined : { y: yImage }}
             whileHover={isE2E ? undefined : { scale: 1.01, rotate: -0.5 }}
-            className="relative mx-auto max-w-[560px] rounded-xl border border-border/30 bg-[linear-gradient(160deg,rgba(255,255,255,0.9),rgba(234,244,250,0.82))] p-4 shadow-sm  origin-bottom"
+            className="relative mx-auto max-w-[560px] rounded-xl border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-md origin-bottom"
           >
-            <div className="absolute -left-7 top-12 hidden h-52 w-40 rounded-xl border border-[var(--gold-accent)] bg-[var(--soft-cream)] lg:block rotate-3" />
-            <div className="absolute -right-6 bottom-10 hidden h-48 w-36 rounded-xl border border-[#d7e1eb] bg-[var(--pastel-sky)] lg:block " />
+            <div className="absolute -left-7 top-12 hidden h-52 w-40 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md lg:block rotate-3" />
+            <div className="absolute -right-6 bottom-10 hidden h-48 w-36 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md lg:block" />
             <div className="relative overflow-hidden rounded-xl">
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-[var(--deep-blue)]/50 via-transparent to-transparent" />
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
               <img
                 src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1200&q=80"
                 srcSet="
@@ -498,14 +497,14 @@ function Hero() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-navy/10 pt-4">
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
               <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-navy/50">Learning Model</p>
-                <p className="mt-1 text-sm font-bold text-navy">Live classes / 1:1 & Group options</p>
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/50">Learning Model</p>
+                <p className="mt-1 text-sm font-bold text-white">Live classes / 1:1 & Group options</p>
               </div>
               <div className="text-right hidden sm:block">
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-navy/50">Student Trust</p>
-                <p className="mt-1 text-sm font-bold text-navy whitespace-nowrap">Rigorous, measured progress</p>
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/50">Student Trust</p>
+                <p className="mt-1 text-sm font-bold text-white whitespace-nowrap">Rigorous, measured progress</p>
               </div>
             </div>
           </motion.div>
@@ -520,10 +519,10 @@ function TrustStrip() {
   return (
     <section className="pb-10">
       <div className={`${pageContainer}`}>
-        <div className="border-b border-navy/10 pb-6">
-          <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-navy/55">Why learners enquire</p>
-          <p className="mt-4 font-serif text-3xl leading-tight text-navy max-w-3xl">
-            Premium authority, personal guidance, and a path that feels genuinely human.
+        <div className="border-b border-white/10 pb-6">
+          <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">What you can expect</p>
+          <p className="mt-4 font-serif text-3xl leading-tight text-white max-w-3xl">
+            Most people just need someone to sit with them and untangle their hesitation.
           </p>
         </div>
         <div className="mt-8 grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
@@ -535,7 +534,7 @@ function TrustStrip() {
                 <span className="mt-1 text-gold">
                   <Icon path={icons[item.icon]} className="h-5 w-5" />
                 </span>
-                <span className="text-sm font-semibold leading-7 text-navy/80">
+                <span className="text-sm font-semibold leading-7 text-white/80">
                   {item.text}
                 </span>
               </div>
@@ -551,12 +550,26 @@ function AboutSection() {
     <section id="about" className={`section-shell ${sectionSpacing}`}>
       <div className={`relative ${pageContainer} grid gap-14 lg:grid-cols-[1.25fr_0.75fr] items-center`}>
         <div className="relative z-10 lg:-mr-12">
-          <SectionIntro
-            eyebrow="My philosophy"
-            title="Coaching is a conversation, not a lecture."
-            copy="I didn't start this to build a factory. Most institutes fail because they hand you templates instead of teaching you how to think. Here, I sit with you, I hear your hesitations, and we correct your mistakes in real-time until they disappear."
-            narrow
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-16"
+          >
+            <h2 className="font-serif text-[4rem] leading-[0.95] tracking-tighter text-white md:text-[6rem] lg:text-[7.5rem]">
+              My <br />
+              <span className="text-gold italic">Philosophy.</span>
+            </h2>
+            <div className="mt-8 border-l-[3px] border-white/20 pl-6 md:mt-10 md:pl-8">
+              <p className="text-xl font-medium text-white md:text-[1.35rem]">
+                You can't lecture someone into fluency.
+              </p>
+              <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
+                I didn’t build this to run a factory. I built it because I was tired of seeing smart people lose opportunities just because they hesitated when they spoke. We don't do templates here. We sit down, we figure out exactly why you're holding back, and we fix it together.
+              </p>
+            </div>
+          </motion.div>
 
           <motion.div
             initial="hidden"
@@ -566,9 +579,9 @@ function AboutSection() {
             className="mt-10 grid gap-4 sm:grid-cols-2"
           >
             {aboutStats.map((item) => (
-              <motion.article key={item.value} variants={fadeUp} className="rounded-none border-t border-navy/20 pt-6 pb-4">
-                <p className="font-serif text-[1.35rem] leading-tight text-navy">{item.value}</p>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.note}</p>
+              <motion.article key={item.value} variants={fadeUp} className="rounded-none border-t border-white/10 pt-6 pb-4">
+                <p className="font-serif text-[1.35rem] leading-tight text-white">{item.value}</p>
+                <p className="mt-3 text-sm leading-7 text-white/70">{item.note}</p>
               </motion.article>
             ))}
           </motion.div>
@@ -581,7 +594,7 @@ function AboutSection() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="grid gap-6 relative"
         >
-          <div className="rounded-xl border border-border bg-white p-6 shadow-[0_32px_80px_rgba(1,54,72,0.12)]">
+          <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
             <div className="grid gap-6">
               <img
                 src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80"
@@ -597,39 +610,39 @@ function AboutSection() {
                 loading="lazy"
                 className="h-[380px] w-full rounded-xl object-cover"
               />
-              <div className="flex flex-col justify-between rounded-xl bg-almond/30 p-8">
+              <div className="flex flex-col justify-between rounded-xl bg-white/5 border border-white/10 p-8">
                 <div>
-                  <p className="font-handwriting text-4xl leading-tight text-navy  opacity-90">
+                  <p className="font-handwriting text-4xl leading-tight text-white opacity-90">
                     "Learners improve when they realize they aren't being judged, they're being guided."
                   </p>
                 </div>
                 <div className="mt-8">
-                  <p className="text-sm font-bold text-navy uppercase tracking-widest">A. Mentor</p>
-                  <p className="mt-1 text-sm text-slate">Founder, Think in English</p>
+                  <p className="text-sm font-bold text-white uppercase tracking-widest">A. Mentor</p>
+                  <p className="mt-1 text-sm text-white/50">Founder, Think in English</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="grid gap-4 md:grid-cols-[1.2fr_.8fr]">
-            <div className="rounded-xl border border-border bg-primary p-6 text-primary-foreground shadow-sm">
-              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/55">Who we train</p>
-              <ul className="mt-5 space-y-4 text-sm leading-7 text-white/82">
+            <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
+              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">Who we train</p>
+              <ul className="mt-5 space-y-4 text-sm leading-7 text-white/80">
                 {[
                   "12th graduates preparing for higher studies, interviews, and admissions.",
                   "Working professionals who need confident spoken English for career growth.",
                   "Abroad aspirants preparing for IELTS, PTE, CELPIP, Duolingo, and LanguageCert."
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-[#e2c8ab]" />
+                    <span className="mt-2 h-2 w-2 rounded-full bg-gold" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="rounded-xl border border-border bg-almond p-6 shadow-card">
-              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-ink/55">Teaching style</p>
-              <p className="mt-4 text-lg font-semibold leading-8 text-navy">
+            <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
+              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">Teaching style</p>
+              <p className="mt-4 text-lg font-semibold leading-8 text-white">
                 Less lecture. More guidance, speaking correction, and course design built around the learner.
               </p>
             </div>
@@ -642,12 +655,15 @@ function AboutSection() {
 
 function WhySection() {
   return (
-    <section id="why-us" className={`section-shell bg-secondary/70 ${sectionSpacing}`}>
+    <section id="why-us" className={`section-shell ${sectionSpacing}`}>
       <div className={`relative ${pageContainer}`}>
         <SectionIntro
           eyebrow="My Approach"
           title="Premium without feeling distant. Personal without feeling casual."
           copy="I don't believe in running a factory. The coaching is designed to feel dependable and distinctly human. That means honest feedback and a clear sense of progress."
+          titleClass="text-white"
+          eyebrowClass="text-white/50"
+          copyClass="text-white/70"
         />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -663,20 +679,20 @@ function WhySection() {
                 transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
                 
                 className={[
-                  "group flex flex-col justify-between gap-8 rounded-xl border border-border bg-white/80 p-8 sm:p-10 shadow-[0_12px_40px_rgba(1,54,72,0.06)]  transition-all",
+                  "group flex flex-col justify-between gap-8 rounded-xl border border-white/10 bg-white/5 p-8 sm:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.1)] backdrop-blur-md transition-all",
                   spanClass,
                   isWide ? "lg:flex-row lg:items-center" : ""
                 ].join(" ")}
               >
                 <div>
-                  <div className={`${item.tone} mb-8 flex h-16 w-16 items-center justify-center rounded-xl text-navy shadow-sm transition-transform duration-500 group-hover: group-hover:scale-110`}>
+                  <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 text-gold shadow-sm transition-transform duration-500 group-hover:scale-110">
                     <Icon path={icons[item.icon]} className="h-7 w-7" />
                   </div>
-                  <h3 className="text-2xl font-serif leading-tight text-navy lg:text-[1.8rem]">{item.title}</h3>
+                  <h3 className="text-2xl font-serif leading-tight text-white lg:text-[1.8rem]">{item.title}</h3>
                 </div>
                 <div className={isWide ? "lg:max-w-md" : ""}>
-                  <p className="text-sm leading-8 text-muted-foreground md:text-base">{item.copy}</p>
-                  <div className="mt-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.15em] text-navy/70">
+                  <p className="text-sm leading-8 text-white/70 md:text-base">{item.copy}</p>
+                  <div className="mt-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.15em] text-white/50">
                     <span className="h-px w-10 bg-gold/50" />
                     Handcrafted pacing
                   </div>
@@ -741,10 +757,10 @@ const arrowVariants: Variants = {
 };
 
 const badgeVariants: Variants = {
-  hidden: { backgroundColor: "rgba(255,255,255,0.8)", borderColor: "rgba(213, 198, 180, 1)" },
-  show: { backgroundColor: "rgba(255,255,255,0.8)", borderColor: "rgba(213, 198, 180, 1)" },
+  hidden: { backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" },
+  show: { backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" },
   hover: { 
-    backgroundColor: "rgba(255,255,255,0.95)", 
+    backgroundColor: "rgba(255,255,255,0.15)", 
     borderColor: "rgba(173, 151, 89, 0.5)", 
     transition: { duration: 0.4, ease: "easeOut" } 
   },
@@ -764,34 +780,34 @@ function CourseCard({ course }: { course: Course }) {
     <motion.article
       variants={cardVariants}
       whileHover="hover"
-      className={["shimmer-line relative overflow-hidden rounded-xl border border-border bg-gradient-to-br p-8 shadow-[0_16px_50px_rgba(1,54,72,0.06)] hover:shadow-[0_24px_60px_rgba(1,54,72,0.12)] hover:border-navy/15 transition-all duration-700 flex flex-col cursor-pointer", course.accent].join(" ")}
+      className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-8 shadow-[0_16px_50px_rgba(0,0,0,0.1)] hover:shadow-[0_24px_60px_rgba(0,0,0,0.2)] hover:border-gold/30 transition-all duration-700 flex flex-col cursor-pointer"
       style={{ transformOrigin: "bottom center" }}
     >
       <motion.div variants={glowVariants} className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
       </motion.div>
 
       <div className="flex items-start justify-between gap-4 relative z-10">
-        <motion.div variants={iconVariants} className="gold-glow rounded-xl bg-white/78 p-3 text-navy shadow-sm">
+        <motion.div variants={iconVariants} className="gold-glow rounded-xl bg-white/10 p-3 text-white shadow-sm border border-white/10">
           <Icon path={icons.book} className="h-6 w-6" />
         </motion.div>
-        <motion.span variants={badgeVariants} className="rounded-full border px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink/80 shadow-sm">
+        <motion.span variants={badgeVariants} className="rounded-full border px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/80 shadow-sm">
           {course.tag}
         </motion.span>
       </div>
       
-      <h3 className="mt-10 font-serif text-[2rem] leading-tight text-navy relative z-10">{course.name}</h3>
-      <p className="mt-5 max-w-md text-sm leading-8 text-muted-foreground md:text-[0.95rem] relative z-10">{course.outcome}</p>
+      <h3 className="mt-10 font-serif text-[2rem] leading-tight text-white relative z-10">{course.name}</h3>
+      <p className="mt-5 max-w-md text-sm leading-8 text-white/70 md:text-[0.95rem] relative z-10">{course.outcome}</p>
       
       <div className="mt-auto relative z-10">
-        <p className="mt-10 text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink/40">Directed correction</p>
-        <div className="mt-6 flex items-center justify-between gap-4 border-t border-navy/5 pt-6">
+        <p className="mt-10 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">Directed correction</p>
+        <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-6">
           <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink/40">Duration</p>
-            <p className="mt-1 text-sm font-bold text-navy">{course.duration}</p>
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">Duration</p>
+            <p className="mt-1 text-sm font-bold text-white">{course.duration}</p>
           </div>
-          <div className="inline-flex items-center gap-2 text-sm font-bold text-navy">
+          <div className="inline-flex items-center gap-2 text-sm font-bold text-white group">
             Discuss path
             <motion.span variants={arrowVariants}>
               <Icon path={icons.arrow} className="h-4 w-4" />
@@ -811,6 +827,9 @@ function CoursesSection() {
           eyebrow="Courses"
           title="Programs built for strict score goals and unshakeable confidence."
           copy="Standardized tests shouldn't feel like a casino. We focus relentlessly on the exact rubrics so you don't just 'try' the exam—you control it."
+          titleClass="text-white"
+          eyebrowClass="text-white/50"
+          copyClass="text-white/70"
         />
 
         <motion.div 
@@ -905,6 +924,9 @@ function TestimonialSection() {
             title="Don't just take my word for it."
             copy="The only metric that matters at the end of the day is whether you hit your goal. Here are real stories from students who stopped struggling with English and started using it with absolute confidence."
             narrow
+            titleClass="text-white"
+            eyebrowClass="text-white/50"
+            copyClass="text-white/70"
           />
           <Testimonials />
         </div>
@@ -917,13 +939,16 @@ function FAQSection() {
   const [open, setOpen] = useState<number>(0);
 
   return (
-    <section id="faq" className={`section-shell bg-secondary/70 ${sectionSpacing}`}>
+    <section id="faq" className={`section-shell ${sectionSpacing}`}>
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <SectionIntro
           eyebrow="Clear answers"
           title="Questions people usually ask in the demo class."
           copy="I believe in complete transparency. If you have any other questions, you can always WhatsApp me directly."
           align="center"
+          titleClass="text-white"
+          eyebrowClass="text-white/50"
+          copyClass="text-white/70"
         />
 
         <div className="mt-12 space-y-4">
@@ -936,15 +961,15 @@ function FAQSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.04 }}
-                className="overflow-hidden rounded-xl border border-border bg-white/75 shadow-card "
+                className="overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-md"
               >
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? -1 : index)}
                   className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left md:px-7"
                 >
-                  <span className="text-base font-bold leading-7 text-navy md:text-lg">{question}</span>
-                  <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="text-navy">
+                  <span className="text-base font-bold leading-7 text-white md:text-lg">{question}</span>
+                  <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="text-white">
                     <Icon path={isOpen ? "M5 12h14" : icons.plus} className="h-5 w-5" />
                   </motion.span>
                 </button>
@@ -957,7 +982,7 @@ function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <div className="px-6 pb-7 text-sm leading-8 text-muted-foreground md:px-7 md:text-base">{answer}</div>
+                      <div className="px-6 pb-7 text-sm leading-8 text-white/70 md:px-7 md:text-base">{answer}</div>
                     </motion.div>
                   ) : null}
                 </AnimatePresence>
@@ -967,6 +992,29 @@ function FAQSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function VismeForm() {
+  useEffect(() => {
+    if (!document.querySelector('script[src="https://static-bundles.visme.co/forms/vismeforms-embed.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://static-bundles.visme.co/forms/vismeforms-embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  return (
+    <div
+      className="visme_d"
+      data-title="B2B Newsletter Subscription"
+      data-url="q74v1r1w-b2b-newsletter-subscription"
+      data-domain="forms"
+      data-full-page="false"
+      data-min-height="500px"
+      data-form-id="175749"
+    ></div>
   );
 }
 
@@ -1017,75 +1065,57 @@ function ContactSection() {
                 ))}
               </div>
 
-              <div className="mt-10 rounded-xl border border-border/30 bg-[rgba(255,248,240,0.85)] p-6 shadow-[0_32px_64px_-16px_rgba(1,54,72,0.16),inset_0_1px_1px_rgba(255,255,255,0.6)]  saturate-150">
-                <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-navy/60">Trust cues</p>
-                <div className="mt-5 grid gap-3">
-                  {[
-                    "Founder-led training with personal feedback loops",
-                    "Live online sessions for exam prep and spoken confidence",
-                    "Suitable for students, professionals, and abroad aspirants"
-                  ].map((item) => (
-                    <div key={item} className="flex gap-3 text-sm leading-7 text-navy/80 font-medium">
-                      <span className="mt-1 text-gold drop-shadow-sm">
-                        <Icon path={icons.check} className="h-4 w-4" />
-                      </span>
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+
             </div>
 
-            <div className="bg-card p-8 md:p-10 lg:p-12">
+            <div className="bg-navy p-8 md:p-10 lg:p-12 lg:border-l lg:border-white/10">
               <div className="mx-auto max-w-xl">
-                <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-ink/55">Direct access</p>
-                <p className="mt-4 text-3xl font-serif leading-tight text-navy md:text-4xl">
+                <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-white/50">Direct access</p>
+                <p className="mt-4 text-3xl font-serif leading-tight text-white md:text-4xl">
                   Stop scrolling. Let's look at your current level and build a roadmap.
                 </p>
-                <p className="mt-5 text-base leading-8 text-muted-foreground">
+                <p className="mt-5 text-base leading-8 text-white/70">
                   No sales teams, no pressure. You'll speak directly with me. We'll identify what's blocking your fluency or score, and decide if I'm the right mentor for you.
                 </p>
-
-
 
                 <motion.a
                   
                   href="https://wa.me/919999999999"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 flex w-fit items-center gap-3 rounded-full border border-[var(--gold-accent)] bg-white px-8 py-4 text-sm font-bold text-navy shadow-[0_12px_30px_rgba(1,54,72,0.08)] transition-shadow hover:shadow-[0_16px_40px_rgba(1,54,72,0.12)]"
+                  className="mt-8 flex w-fit items-center gap-3 rounded-full border border-gold bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md shadow-[0_12px_30px_rgba(1,54,72,0.08)] transition-all hover:bg-white/10"
                 >
                   Message me on WhatsApp
                   <Icon path={icons.chat} className="h-[18px] w-[18px]" />
                 </motion.a>
 
                 <form onSubmit={handleSubmit} className="mt-10 grid gap-6">
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink/40 flex items-center gap-4">
-                    <span className="flex-1 h-px bg-border"></span>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40 flex items-center gap-4">
+                    <span className="flex-1 h-px bg-white/10"></span>
                     Or send an email enquiry
-                    <span className="flex-1 h-px bg-border"></span>
+                    <span className="flex-1 h-px bg-white/10"></span>
                   </p>
                   {[
                     ["Your Name", "text", "How should I address you?"],
                     ["WhatsApp Number", "tel", "So I can reach out directly"],
                     ["What are you struggling with?", "text", "Example: IELTS Writing or spoken hesitation"]
                   ].map(([label, type, placeholder]) => (
-                    <label key={label} className="grid gap-2 text-sm font-bold text-navy">
+                    <label key={label} className="grid gap-2 text-sm font-bold text-white">
                       {label}
                       <input
                         type={type}
                         placeholder={placeholder}
                         required
-                        className="rounded-xl border border-border bg-white px-5 py-4 text-sm font-medium text-ink outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)]"
+                        className="rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-sm font-medium text-white placeholder-white/40 outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)]"
                       />
                     </label>
                   ))}
 
-                  <label className="grid gap-2 text-sm font-bold text-navy">
+                  <label className="grid gap-2 text-sm font-bold text-white">
                     When is your exam? (If applicable)
                     <textarea
                       placeholder="Give me an idea of your timeline and constraints."
-                      className="min-h-[120px] rounded-xl border border-border bg-white px-5 py-4 text-sm font-medium text-ink outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)] resize-none"
+                      className="min-h-[120px] rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-sm font-medium text-white placeholder-white/40 outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)] resize-none"
                     />
                   </label>
 
@@ -1094,15 +1124,21 @@ function ContactSection() {
                     whileTap={{ scale: 0.99 }}
                     type="submit"
                     className={[
-                      "mt-4 inline-flex items-center justify-center gap-3 rounded-full px-8 py-5 text-[13px] font-extrabold uppercase tracking-[0.16em] text-white shadow-sm transition-colors",
-                      submitted ? "bg-[var(--deep-blue)]" : "bg-primary"
+                      "mt-4 inline-flex items-center justify-center gap-3 rounded-full px-8 py-5 text-[13px] font-extrabold uppercase tracking-[0.16em] text-navy shadow-sm transition-colors",
+                      submitted ? "bg-white" : "bg-gold hover:bg-gold/90"
                     ].join(" ")}
                   >
                     {submitted ? "I'll be in touch soon" : "Send directly to my inbox"}
                     <Icon path={submitted ? icons.check : icons.arrow} className="h-4 w-4" />
                   </motion.button>
-                  <p className="text-center text-[13px] font-semibold text-muted-foreground">I personally read and reply within hours.</p>
+                  <p className="text-center text-[13px] font-semibold text-white/50">I personally read and reply within hours.</p>
                 </form>
+
+                <div className="mt-16 pt-16 border-t border-white/10">
+                  <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden backdrop-blur-md">
+                    <VismeForm />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1120,13 +1156,13 @@ function Footer() {
   ] as const;
 
   return (
-    <footer className="border-t border-border bg-secondary/80 py-12">
+    <footer className="border-t border-white/10 bg-navy py-12">
       <div className={`${pageContainer} grid gap-8 lg:grid-cols-[1.2fr_.8fr]`}>
         <div>
-          <a href="#" className="font-serif text-3xl text-navy">
+          <a href="#" className="font-serif text-3xl text-white">
             <span className="text-gold">Think</span> in English
           </a>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
+          <p className="mt-4 max-w-xl text-sm leading-7 text-white/70">
             Premium, founder-led online English coaching for exam performance and practical confidence. Designed to feel serious, warm, and result-oriented from the first enquiry to the final class.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -1136,13 +1172,13 @@ function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white/75 text-navy shadow-card"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
                 aria-label={label}
               >
                 <Icon path={path} className="h-4 w-4" />
               </a>
             ))}
-            <a href="#contact" className="gold-glow ml-1 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-bold text-primary-foreground">
+            <a href="#contact" className="ml-1 inline-flex items-center gap-2 rounded-full border border-gold bg-transparent px-5 py-3 text-sm font-bold text-gold transition hover:bg-gold/10">
               Book Demo
               <Icon path={icons.arrow} className="h-4 w-4" />
             </a>
@@ -1151,23 +1187,23 @@ function Footer() {
 
         <div className="grid gap-8 sm:grid-cols-2">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-ink/55">Navigate</p>
-            <div className="mt-4 grid gap-3 text-sm font-semibold text-navy">
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/50">Navigate</p>
+            <div className="mt-4 grid gap-3 text-sm font-semibold text-white/90">
               {[
                 ["About", "#about"],
                 ["Courses", "#courses"],
                 ["Stories", "#testimonials"],
                 ["FAQ", "#faq"]
               ].map(([label, href]) => (
-                <a key={label} href={href} className="transition hover:translate-x-1">
+                <a key={label} href={href} className="transition hover:text-white hover:translate-x-1">
                   {label}
                 </a>
               ))}
             </div>
           </div>
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-ink/55">Connect</p>
-            <div className="mt-4 grid gap-3 text-sm font-semibold text-navy">
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/50">Connect</p>
+            <div className="mt-4 grid gap-3 text-sm font-semibold text-white/90">
               {[
                 ["Instagram", "https://instagram.com/thinkinenglish"],
                 ["Facebook", "https://facebook.com/thinkinenglish"],
@@ -1180,7 +1216,7 @@ function Footer() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="transition hover:translate-x-1"
+                  className="transition hover:text-white hover:translate-x-1"
                 >
                   {label}
                 </a>
@@ -1189,7 +1225,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className={`${pageContainer} mt-8 border-t border-border pt-6 text-sm text-muted-foreground`}>
+      <div className={`${pageContainer} mt-8 border-t border-white/10 pt-6 text-sm text-white/50`}>
         Copyright 2024 Think in English. Unravel Your Journey of English.
       </div>
     </footer>
@@ -1205,21 +1241,21 @@ function FloatingWhatsApp() {
         rel="noopener noreferrer"
         
         whileTap={{ scale: 0.98 }}
-        className="fixed bottom-5 right-5 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm md:inline-flex"
+        className="fixed bottom-5 right-5 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-gold text-navy shadow-sm md:inline-flex hover:bg-gold/90 transition-colors"
         aria-label="Chat on WhatsApp"
       >
         <Icon path={icons.chat} className="h-6 w-6" />
       </motion.a>
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-cream/95 px-4 py-3  md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-navy/95 backdrop-blur-md px-4 py-3 md:hidden">
         <div className="mx-auto flex w-full max-w-md gap-3">
-          <a href="#contact" className="flex-1 rounded-full bg-primary px-4 py-3 text-center text-sm font-extrabold uppercase tracking-[0.12em] text-primary-foreground">
+          <a href="#contact" className="flex-1 rounded-full bg-white px-4 py-3 text-center text-sm font-extrabold uppercase tracking-[0.12em] text-navy">
             Book Demo
           </a>
           <a
             href="https://wa.me/919999999999"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 rounded-full border border-[#d8c9a9] bg-white px-4 py-3 text-center text-sm font-extrabold uppercase tracking-[0.12em] text-navy"
+            className="flex-1 rounded-full border border-white/20 bg-white/5 px-4 py-3 text-center text-sm font-extrabold uppercase tracking-[0.12em] text-white"
           >
             WhatsApp
           </a>
