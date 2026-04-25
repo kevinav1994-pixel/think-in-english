@@ -5,36 +5,50 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: "#FFF8F0",
-        almond: "#F8EEDC",
-        blush: "#F1DCCF",
-        mist: "#EAF4FA",
-        navy: "#013648",
-        ink: "#173E50",
-        slate: "#56707B",
-        line: "#DED6C8",
-        sand: "#FEFBF6",
-        warm: "#F9F0E3",
-        gold: "#AD9759",
-        goldTint: "#F5E7C1",
-        pine: "#29493F",
-        background: "#FFF8F0",
-        foreground: "#173E50",
-        card: "#FEFBF6",
-        "card-foreground": "#173E50",
-        border: "#DED6C8",
-        primary: "#013648",
-        "primary-foreground": "#FFF8F0",
-        secondary: "#F9F0E3",
-        "secondary-foreground": "#013648",
-        muted: "#F5EEE4",
-        "muted-foreground": "#56707B",
-        accent: "#EAF4FA",
-        "accent-foreground": "#013648"
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        primary: {
+          DEFAULT: "rgb(var(--primary) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          DEFAULT: "rgb(var(--secondary) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
+        },
+        muted: {
+          DEFAULT: "rgb(var(--muted) / <alpha-value>)",
+          foreground: "rgb(var(--muted-foreground) / <alpha-value>)",
+        },
+        card: {
+          DEFAULT: "rgb(var(--card) / <alpha-value>)",
+          foreground: "rgb(var(--card-foreground) / <alpha-value>)",
+        },
+        border: "rgb(var(--border) / <alpha-value>)",
+        
+        // Strict 4-color palette
+        navy: "rgb(var(--deep-blue) / <alpha-value>)",   
+        sky: "rgb(var(--pastel-sky) / <alpha-value>)",
+        cream: "rgb(var(--soft-cream) / <alpha-value>)",
+        gold: "rgb(var(--gold-accent) / <alpha-value>)",
+
+        // Aliases to avoid breaking existing App.tsx before cleanup
+        almond: "rgb(var(--pastel-sky) / <alpha-value>)",
+        blush: "rgb(var(--pastel-sky) / <alpha-value>)",
+        mist: "rgb(var(--pastel-sky) / <alpha-value>)",
+        ink: "rgb(var(--deep-blue) / <alpha-value>)",
+        slate: "rgb(var(--muted-foreground) / <alpha-value>)",
+        line: "rgb(var(--border) / 0.1)",
+        sand: "rgb(var(--soft-cream) / <alpha-value>)",
+        warm: "rgb(var(--soft-cream) / <alpha-value>)",
+        goldTint: "rgb(var(--gold-accent) / 0.2)",
+        pine: "rgb(var(--deep-blue) / <alpha-value>)",
+        accent: "rgb(var(--gold-accent) / <alpha-value>)",
+        "accent-foreground": "rgb(var(--soft-cream) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Manrope", "sans-serif"],
-        serif: ["Fraunces", "serif"]
+        serif: ["Fraunces", "serif"],
+        handwriting: ["Caveat", "cursive"]
       },
       boxShadow: {
         glow: "0 26px 80px rgba(1, 54, 72, 0.12)",

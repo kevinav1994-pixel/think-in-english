@@ -7,6 +7,31 @@
 @layer base {
   :root {
     color-scheme: light;
+    
+    --deep-blue: 1 54 72;    /* #013648 */
+    --pastel-sky: 234 244 250; /* #EAF4FA */
+    --soft-cream: 255 248 240; /* #FFF8F0 */
+    --gold-accent: 173 151 89; /* #AD9759 */
+
+    --background: var(--soft-cream);
+    --foreground: var(--deep-blue);
+    
+    --card: 255 255 255;
+    --card-foreground: var(--deep-blue);
+    
+    --primary: var(--deep-blue);
+    --primary-foreground: var(--soft-cream);
+    
+    --secondary: var(--pastel-sky);
+    --secondary-foreground: var(--deep-blue);
+    
+    --muted: 245 238 228;
+    --muted-foreground: 86 112 123;
+    
+    --accent: var(--gold-accent);
+    --accent-foreground: var(--soft-cream);
+    
+    --border: var(--deep-blue);
   }
 
   html {
@@ -16,9 +41,9 @@
   body {
     @apply bg-background font-sans text-foreground antialiased;
     background:
-      radial-gradient(circle at top left, rgba(245, 231, 193, 0.72), transparent 26%),
-      radial-gradient(circle at top right, rgba(234, 244, 250, 0.82), transparent 24%),
-      linear-gradient(180deg, #fff8f0 0%, #fefbf6 42%, #f9f0e3 100%);
+      radial-gradient(circle at top left, rgb(var(--pastel-sky) / 0.72), transparent 26%),
+      radial-gradient(circle at top right, rgb(var(--gold-accent) / 0.12), transparent 24%),
+      linear-gradient(180deg, rgb(var(--soft-cream)) 0%, rgb(var(--soft-cream)) 42%, rgb(var(--pastel-sky) / 0.4) 100%);
     overflow-x: hidden;
   }
 
@@ -29,8 +54,8 @@
     pointer-events: none;
     opacity: 0.15;
     background-image:
-      linear-gradient(rgba(1, 54, 72, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(1, 54, 72, 0.04) 1px, transparent 1px);
+      linear-gradient(rgb(var(--deep-blue) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--deep-blue) / 0.04) 1px, transparent 1px);
     background-size: 120px 120px;
     mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
   }
