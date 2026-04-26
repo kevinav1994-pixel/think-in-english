@@ -566,7 +566,7 @@ function AboutSection() {
                 You can't lecture someone into fluency.
               </p>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
-                I didn’t build this for mass communication training.I built it because I kept seeing smart people lose interviews, miss opportunities, and stay silent in rooms where they should’ve spoken—just because they hesitated while speaking. Why do people hesitate while speaking? It’s not a lack of knowledge.
+                I didn’t build this for mass communication training. I built it because I kept seeing smart people lose interviews, miss opportunities, and stay silent in rooms where they should’ve spoken—just because they hesitated while speaking. Why do people hesitate while speaking? It’s not a lack of knowledge.
                 It’s overthinking, fear of judgment, and not knowing how to structure thoughts clearly in real time—especially during interviews, presentations, or conversations that matter. That’s exactly what we fix through real-time speaking practice and direct feedback.
               </p>
             </div>
