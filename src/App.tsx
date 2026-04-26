@@ -1153,6 +1153,7 @@ function ContactSection() {
                   {[
                     ["Your Name", "text", "How should I address you?", "user_name"],
                     ["WhatsApp Number", "tel", "So I can reach out directly", "user_phone"],
+                    ["Your Email ID", "email", "So I can send you a mail", "user_email"],
                     ["What are you struggling with?", "text", "Example: IELTS Writing or spoken hesitation", "message"]
                   ].map(([label, type, placeholder, name]) => (
                     <label key={label} className="grid gap-2 text-sm font-bold text-white">
@@ -1162,6 +1163,7 @@ function ContactSection() {
                         type={type}
                         placeholder={placeholder}
                         required
+                        onInput={name === "user_phone" ? (e) => { e.currentTarget.value = e.currentTarget.value.replace(/[^0-9+]/g, '') } : undefined}
                         className="rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-sm font-medium text-white placeholder-white/40 outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)]"
                       />
                     </label>
