@@ -866,7 +866,35 @@ function CoursesSection() {
           variants={gridVariants}
           className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch"
         >
-          {courses.map((course) => (
+          {courses.slice(0, 6).map((course) => (
+            <CourseCard key={course.name} course={course} />
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-28 mb-12 pl-6 md:pl-8 border-l-[3px] border-gold"
+        >
+          <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50 mb-4">Additional Help</p>
+          <h3 className="font-serif text-[1.75rem] md:text-[2.2rem] leading-tight text-white max-w-2xl">
+            No long-term commitment. Just results.
+          </h3>
+          <p className="mt-3 text-lg text-white/70">
+            Pay per session. Learn what you need.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={gridVariants}
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch"
+        >
+          {courses.slice(6).map((course) => (
             <CourseCard key={course.name} course={course} />
           ))}
         </motion.div>
@@ -1128,8 +1156,8 @@ function ContactSection() {
                     whileTap={{ scale: 0.99 }}
                     type="submit"
                     className={[
-                      "mt-4 inline-flex items-center justify-center gap-3 rounded-full px-8 py-5 text-[13px] font-extrabold uppercase tracking-[0.16em] text-navy shadow-sm transition-colors",
-                      submitted ? "bg-white" : "bg-gold hover:bg-gold/90"
+                      "mt-4 inline-flex items-center justify-center gap-3 rounded-full px-8 py-5 text-[13px] font-extrabold uppercase tracking-[0.16em] shadow-sm transition-colors",
+                      submitted ? "bg-white text-navy" : "bg-gold text-white hover:bg-gold/90"
                     ].join(" ")}
                   >
                     {submitted ? "I'll be in touch soon" : "Send directly to my inbox"}
