@@ -60,7 +60,9 @@ type Course = {
   name: string;
   tag: string;
   outcome: string;
-  duration: string;
+  duration?: string;
+  price?: string;
+  cta?: string;
   accent: string;
 };
 
@@ -186,6 +188,30 @@ const courses: Course[] = [
     tag: "Confidence",
     outcome: "Stop translating from your native language before you speak. Own your voice at work.",
     duration: "Until you're ready",
+    accent: "from-[#f5e7dc] via-[#fffaf5] to-white"
+  },
+  {
+    name: "Crash Lessons",
+    tag: "Fast fixes",
+    outcome: "Brush up fast with targeted 2–5 hour sessions. Perfect before exams or interviews. Fast fixes for real problems.",
+    price: "Starting from ₹50+",
+    cta: "Book Now",
+    accent: "from-[#f5e7dc] via-[#fffaf5] to-white"
+  },
+  {
+    name: "Single Module Sessions",
+    tag: "Pay per session",
+    outcome: "Struggling with one specific part? Fix it without committing to a full course. Pay per session. Learn what you need.",
+    price: "Starting from ₹50+",
+    cta: "Book Now",
+    accent: "from-[#f5e7dc] via-[#fffaf5] to-white"
+  },
+  {
+    name: "Writing Corrections",
+    tag: "No commitment",
+    outcome: "Submit your writing. Get precise corrections and improvements—no fluff. No long-term commitment. Just results.",
+    price: "Starting from ₹50+",
+    cta: "Book Now",
     accent: "from-[#f5e7dc] via-[#fffaf5] to-white"
   }
 ];
@@ -730,7 +756,7 @@ const cardVariants: Variants = {
   },
   hover: {
     y: -8,
-    scale: 1.015,
+    scale: 1.02,
     transition: {
       duration: 0.6,
       ease: [0.16, 1, 0.3, 1],
@@ -805,11 +831,11 @@ function CourseCard({ course }: { course: Course }) {
         <p className="mt-10 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">Directed correction</p>
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-6">
           <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">Duration</p>
-            <p className="mt-1 text-sm font-bold text-white">{course.duration}</p>
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">{course.price ? "Price" : "Duration"}</p>
+            <p className="mt-1 text-sm font-bold text-white">{course.price || course.duration}</p>
           </div>
           <div className="inline-flex items-center gap-2 text-sm font-bold text-white group">
-            Discuss path
+            {course.cta || "Discuss path"}
             <motion.span variants={arrowVariants}>
               <Icon path={icons.arrow} className="h-4 w-4" />
             </motion.span>
