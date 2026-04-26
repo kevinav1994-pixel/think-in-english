@@ -111,10 +111,10 @@ const trustItems: TrustItem[] = [
 ];
 
 const aboutStats: AboutStat[] = [
-  { value: "No Generic Templates", note: "I don't hand you a PDF and leave. We build your responses together." },
-  { value: "Live Human Correction", note: "If you hesitate or mispronounce, I stop you and fix it right there." },
-  { value: "Tailored Pacing", note: "Some students need a week, some need three months. We decide together." },
-  { value: "Zero Crowded Batches", note: "I work with individuals or small groups where I know everyone's weak spots." }
+  { value: "No Generic Communication Templates", note: "I don’t give you pre-written interview answers or PDFs. We build your responses together so you can speak confidently in real situations—without memorizing scripts." },
+  { value: " Live Speaking Correction (Real-Time Feedback)", note: "If you hesitate, mispronounce, or lose clarity while speaking, I stop you immediately and correct it on the spot—so you improve faster, not later." },
+  { value: "Flexible Learning Pace (Based on Your Progress)", note: "How long does it take to improve communication skills? It depends. Some people improve in a week, others take months—we set the pace based on your actual progress." },
+  { value: "One-on-One or Small Group Coaching (No Crowded Classes)", note: "No crowded batches. I work with individuals or small groups so I can identify exactly where you hesitate and fix it personally." }
 ];
 
 const whyItems: WhyItem[] = [
@@ -566,7 +566,8 @@ function AboutSection() {
                 You can't lecture someone into fluency.
               </p>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
-                I didn’t build this to run a factory. I built it because I was tired of seeing smart people lose opportunities just because they hesitated when they spoke. We don't do templates here. We sit down, we figure out exactly why you're holding back, and we fix it together.
+                I didn’t build this for mass communication training.I built it because I kept seeing smart people lose interviews, miss opportunities, and stay silent in rooms where they should’ve spoken—just because they hesitated while speaking. Why do people hesitate while speaking? It’s not a lack of knowledge.
+                It’s overthinking, fear of judgment, and not knowing how to structure thoughts clearly in real time—especially during interviews, presentations, or conversations that matter. That’s exactly what we fix through real-time speaking practice and direct feedback.
               </p>
             </div>
           </motion.div>
@@ -1016,7 +1017,7 @@ function ContactSection() {
         <div className="overflow-hidden rounded-xl border border-border bg-navy shadow-sm">
           <div className="grid gap-0 lg:grid-cols-[.95fr_1.05fr]">
             <div className="p-8 text-white md:p-10 lg:p-12">
-              <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-white/52">Contact / Enquiry</p>
+              <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-white/52">Contact</p>
               <h2 className="mt-5 max-w-lg font-serif text-4xl leading-tight text-white md:text-[3.2rem]">
                 Start with a demo class and get the right recommendation.
               </h2>
