@@ -368,7 +368,7 @@ function NavBar() {
           <motion.a
 
             whileTap={{ scale: 0.99 }}
-            href="#contact"
+            href="https://wa.me/918714278397?text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
             className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-sm transition-all gold-glow bg-primary text-primary-foreground hover:bg-primary/90"
           >
             Book Free Demo
@@ -1135,7 +1135,7 @@ function ContactSection() {
 
                 <motion.a
 
-                  href="https://wa.me/919999999999"
+                  href="https://wa.me/918714278397?text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 flex w-fit items-center gap-3 rounded-full border border-gold bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md shadow-[0_12px_30px_rgba(1,54,72,0.08)] transition-all hover:bg-white/10"
