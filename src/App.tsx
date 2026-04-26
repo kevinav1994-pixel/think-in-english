@@ -1,4 +1,5 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, useRef, type FormEvent } from "react";
+import emailjs from '@emailjs/browser';
 import {
   AnimatePresence,
   MotionConfig,
@@ -1052,11 +1053,33 @@ function FAQSection() {
 
 function ContactSection() {
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const form = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
-    window.setTimeout(() => setSubmitted(false), 3000);
+    if (!form.current) return;
+    
+    setLoading(true);
+    
+    emailjs.sendForm(
+      'service_2gsw3vb',
+      'template_rk1wdsx',
+      form.current,
+      'UuNmf3kVCj3UHqC28'
+    ).then(
+      () => {
+        setLoading(false);
+        setSubmitted(true);
+        form.current?.reset();
+        window.setTimeout(() => setSubmitted(false), 3000);
+      },
+      (error) => {
+        setLoading(false);
+        console.log('FAILED...', error.text);
+        alert(`Failed to send message. Error: ${error.text || error.message || JSON.stringify(error)}`);
+      }
+    );
   };
 
   const contactChips = [
@@ -1121,20 +1144,21 @@ function ContactSection() {
                   <Icon path={icons.chat} className="h-[18px] w-[18px]" />
                 </motion.a>
 
-                <form onSubmit={handleSubmit} className="mt-10 grid gap-6">
+                <form ref={form} onSubmit={handleSubmit} className="mt-10 grid gap-6">
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40 flex items-center gap-4">
                     <span className="flex-1 h-px bg-white/10"></span>
                     Or send an email enquiry
                     <span className="flex-1 h-px bg-white/10"></span>
                   </p>
                   {[
-                    ["Your Name", "text", "How should I address you?"],
-                    ["WhatsApp Number", "tel", "So I can reach out directly"],
-                    ["What are you struggling with?", "text", "Example: IELTS Writing or spoken hesitation"]
-                  ].map(([label, type, placeholder]) => (
+                    ["Your Name", "text", "How should I address you?", "user_name"],
+                    ["WhatsApp Number", "tel", "So I can reach out directly", "user_phone"],
+                    ["What are you struggling with?", "text", "Example: IELTS Writing or spoken hesitation", "message"]
+                  ].map(([label, type, placeholder, name]) => (
                     <label key={label} className="grid gap-2 text-sm font-bold text-white">
                       {label}
                       <input
+                        name={name}
                         type={type}
                         placeholder={placeholder}
                         required
@@ -1146,6 +1170,7 @@ function ContactSection() {
                   <label className="grid gap-2 text-sm font-bold text-white">
                     When is your exam? (If applicable)
                     <textarea
+                      name="exam_date"
                       placeholder="Give me an idea of your timeline and constraints."
                       className="min-h-[120px] rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-sm font-medium text-white placeholder-white/40 outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)] resize-none"
                     />
@@ -1155,12 +1180,14 @@ function ContactSection() {
 
                     whileTap={{ scale: 0.99 }}
                     type="submit"
+                    disabled={loading || submitted}
                     className={[
                       "mt-4 inline-flex items-center justify-center gap-3 rounded-full px-8 py-5 text-[13px] font-extrabold uppercase tracking-[0.16em] shadow-sm transition-colors",
-                      submitted ? "bg-white text-navy" : "bg-gold text-white hover:bg-gold/90"
+                      submitted ? "bg-white text-navy" : "bg-gold text-white hover:bg-gold/90",
+                      loading ? "opacity-70 cursor-not-allowed" : ""
                     ].join(" ")}
                   >
-                    {submitted ? "I'll be in touch soon" : "Send directly to my inbox"}
+                    {loading ? "Sending..." : submitted ? "I'll be in touch soon" : "Send directly to my inbox"}
                     <Icon path={submitted ? icons.check : icons.arrow} className="h-4 w-4" />
                   </motion.button>
                   <p className="text-center text-[13px] font-semibold text-white/50">I personally read and reply within hours.</p>
