@@ -1059,12 +1059,12 @@ function ContactSection() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!form.current) return;
-    
+
     setLoading(true);
-    
+
     emailjs.sendForm(
       'service_2gsw3vb',
-      'template_osr7pOr',
+      'template_osr7p0r',
       form.current,
       'UuNmf3kVCj3UHqC28'
     ).then(
