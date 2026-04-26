@@ -617,7 +617,7 @@ function AboutSection() {
                   </p>
                 </div>
                 <div className="mt-8">
-                  <p className="text-sm font-bold text-white uppercase tracking-widest">A. Mentor</p>
+                  <p className="text-sm font-bold text-white uppercase tracking-widest">Ardra Shaji</p>
                   <p className="mt-1 text-sm text-white/50">Founder, Think in English</p>
                 </div>
               </div>
@@ -694,7 +694,7 @@ function WhySection() {
                   <p className="text-sm leading-8 text-white/70 md:text-base">{item.copy}</p>
                   <div className="mt-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.15em] text-white/50">
                     <span className="h-px w-10 bg-gold/50" />
-                    Handcrafted pacing
+
                   </div>
                 </div>
               </motion.article>
