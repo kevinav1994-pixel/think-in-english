@@ -1064,7 +1064,7 @@ function ContactSection() {
     
     emailjs.sendForm(
       'service_2gsw3vb',
-      'template_rk1wdsx',
+      'template_osr7p0r',
       form.current,
       'UuNmf3kVCj3UHqC28'
     ).then(
