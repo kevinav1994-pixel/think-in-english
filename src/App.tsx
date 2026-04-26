@@ -111,15 +111,15 @@ const trustItems: TrustItem[] = [
 ];
 
 const aboutStats: AboutStat[] = [
-  { value: "No generic templates", note: "I don't hand you a PDF and leave. We build your responses together." },
-  { value: "Live human correction", note: "If you hesitate or mispronounce, I stop you and fix it right there." },
-  { value: "Tailored pacing", note: "Some students need a week, some need three months. We decide together." },
-  { value: "Zero crowded batches", note: "I work with individuals or small groups where I know everyone's weak spots." }
+  { value: "No Generic Templates", note: "I don't hand you a PDF and leave. We build your responses together." },
+  { value: "Live Human Correction", note: "If you hesitate or mispronounce, I stop you and fix it right there." },
+  { value: "Tailored Pacing", note: "Some students need a week, some need three months. We decide together." },
+  { value: "Zero Crowded Batches", note: "I work with individuals or small groups where I know everyone's weak spots." }
 ];
 
 const whyItems: WhyItem[] = [
   {
-    title: "No generic syllabus. We practice only what you need.",
+    title: "No eneric syllabus. We practice only what you need.",
     copy: "We don't waste time on chapters you already know. On day one, we find your weak spots, map your goal, and work exclusively on what will actually move the needle for your exam or fluency.",
     icon: "target",
     tone: "bg-goldTint"
@@ -339,7 +339,7 @@ function NavBar() {
             ))}
           </nav>
           <motion.a
-            
+
             whileTap={{ scale: 0.99 }}
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-sm transition-all gold-glow bg-primary text-primary-foreground hover:bg-primary/90"
@@ -430,7 +430,7 @@ function Hero() {
 
           <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
             <motion.a
-              
+
               whileTap={{ scale: 0.99 }}
               href="#contact"
               className="gold-glow inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-navy shadow-sm transition hover:bg-white/90"
@@ -439,7 +439,7 @@ function Hero() {
               <Icon path={icons.arrow} className="h-4 w-4" />
             </motion.a>
             <motion.a
-              
+
               href="https://wa.me/919999999999"
               target="_blank"
               rel="noopener noreferrer"
@@ -517,7 +517,7 @@ function Hero() {
 function TrustStrip() {
   const list: TrustItem[] = trustItems;
   return (
-    <section className="pb-10">
+    <section className="pt-24 md:pt-32 pb-10">
       <div className={`${pageContainer}`}>
         <div className="border-b border-white/10 pb-6">
           <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">What you can expect</p>
@@ -526,19 +526,19 @@ function TrustStrip() {
           </p>
         </div>
         <div className="mt-8 grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-            {list.map((item, index) => (
-              <div
-                key={`${item.text}-${index}`}
-                className="flex items-start gap-4"
-              >
-                <span className="mt-1 text-gold">
-                  <Icon path={icons[item.icon]} className="h-5 w-5" />
-                </span>
-                <span className="text-sm font-semibold leading-7 text-white/80">
-                  {item.text}
-                </span>
-              </div>
-            ))}
+          {list.map((item, index) => (
+            <div
+              key={`${item.text}-${index}`}
+              className="flex items-start gap-4"
+            >
+              <span className="mt-1 text-gold">
+                <Icon path={icons[item.icon]} className="h-5 w-5" />
+              </span>
+              <span className="text-sm font-semibold leading-7 text-white/80">
+                {item.text}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -677,7 +677,7 @@ function WhySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
-                
+
                 className={[
                   "group flex flex-col justify-between gap-8 rounded-xl border border-white/10 bg-white/5 p-8 sm:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.1)] backdrop-blur-md transition-all",
                   spanClass,
@@ -740,38 +740,38 @@ const cardVariants: Variants = {
 const iconVariants: Variants = {
   hidden: { y: 0, scale: 1 },
   show: { y: 0, scale: 1 },
-  hover: { 
-    y: -4, 
-    scale: 1.05, 
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } 
+  hover: {
+    y: -4,
+    scale: 1.05,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
   },
 };
 
 const arrowVariants: Variants = {
   hidden: { x: 0 },
   show: { x: 0 },
-  hover: { 
-    x: 6, 
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } 
+  hover: {
+    x: 6,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
   },
 };
 
 const badgeVariants: Variants = {
   hidden: { backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" },
   show: { backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" },
-  hover: { 
-    backgroundColor: "rgba(255,255,255,0.15)", 
-    borderColor: "rgba(173, 151, 89, 0.5)", 
-    transition: { duration: 0.4, ease: "easeOut" } 
+  hover: {
+    backgroundColor: "rgba(255,255,255,0.15)",
+    borderColor: "rgba(173, 151, 89, 0.5)",
+    transition: { duration: 0.4, ease: "easeOut" }
   },
 };
 
 const glowVariants: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 0 },
-  hover: { 
-    opacity: 1, 
-    transition: { duration: 0.6, ease: "linear" } 
+  hover: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: "linear" }
   },
 };
 
@@ -796,10 +796,10 @@ function CourseCard({ course }: { course: Course }) {
           {course.tag}
         </motion.span>
       </div>
-      
+
       <h3 className="mt-10 font-serif text-[2rem] leading-tight text-white relative z-10">{course.name}</h3>
       <p className="mt-5 max-w-md text-sm leading-8 text-white/70 md:text-[0.95rem] relative z-10">{course.outcome}</p>
-      
+
       <div className="mt-auto relative z-10">
         <p className="mt-10 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">Directed correction</p>
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-6">
@@ -832,7 +832,7 @@ function CoursesSection() {
           copyClass="text-white/70"
         />
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
@@ -995,29 +995,6 @@ function FAQSection() {
   );
 }
 
-function VismeForm() {
-  useEffect(() => {
-    if (!document.querySelector('script[src="https://static-bundles.visme.co/forms/vismeforms-embed.js"]')) {
-      const script = document.createElement("script");
-      script.src = "https://static-bundles.visme.co/forms/vismeforms-embed.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
-
-  return (
-    <div
-      className="visme_d"
-      data-title="B2B Newsletter Subscription"
-      data-url="q74v1r1w-b2b-newsletter-subscription"
-      data-domain="forms"
-      data-full-page="false"
-      data-min-height="500px"
-      data-form-id="175749"
-    ></div>
-  );
-}
-
 function ContactSection() {
   const [submitted, setSubmitted] = useState<boolean>(false);
 
@@ -1050,7 +1027,7 @@ function ContactSection() {
               <div className="mt-8 flex flex-wrap gap-3">
                 {contactChips.map(([label, value, href, icon]) => (
                   <motion.a
-                    
+
                     key={label}
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
@@ -1079,7 +1056,7 @@ function ContactSection() {
                 </p>
 
                 <motion.a
-                  
+
                   href="https://wa.me/919999999999"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1120,7 +1097,7 @@ function ContactSection() {
                   </label>
 
                   <motion.button
-                    
+
                     whileTap={{ scale: 0.99 }}
                     type="submit"
                     className={[
@@ -1134,11 +1111,7 @@ function ContactSection() {
                   <p className="text-center text-[13px] font-semibold text-white/50">I personally read and reply within hours.</p>
                 </form>
 
-                <div className="mt-16 pt-16 border-t border-white/10">
-                  <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden backdrop-blur-md">
-                    <VismeForm />
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>
@@ -1150,9 +1123,8 @@ function ContactSection() {
 
 function Footer() {
   const socialIcons = [
-    ["Instagram", "https://instagram.com/thinkinenglish", "M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zM12 7a5 5 0 100 10 5 5 0 000-10z"],
-    ["Facebook", "https://facebook.com/thinkinenglish", "M15 8h3V4h-3c-2.8 0-5 2.2-5 5v3H7v4h3v6h4v-6h3.2l.8-4H14V9c0-.6.4-1 1-1z"],
-    ["YouTube", "https://youtube.com/@thinkinenglish", "M22 12s0-3.4-.4-5c-.2-1.1-1.1-2-2.2-2.2C17.8 4.4 12 4.4 12 4.4s-5.8 0-7.4.4c-1.1.2-2 1.1-2.2 2.2C2 8.6 2 12 2 12s0 3.4.4 5c.2 1.1 1.1 2 2.2 2.2 1.6.4 7.4.4 7.4.4s5.8 0 7.4-.4c1.1-.2 2-1.1 2.2-2.2.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"]
+    ["Instagram", "https://www.instagram.com/thinknspeak_in_english", "M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zM12 7a5 5 0 100 10 5 5 0 000-10z"],
+    ["YouTube", "https://www.youtube.com/@thinkinenglish1111", "M22 12s0-3.4-.4-5c-.2-1.1-1.1-2-2.2-2.2C17.8 4.4 12 4.4 12 4.4s-5.8 0-7.4.4c-1.1.2-2 1.1-2.2 2.2C2 8.6 2 12 2 12s0 3.4.4 5c.2 1.1 1.1 2 2.2 2.2 1.6.4 7.4.4 7.4.4s5.8 0 7.4-.4c1.1-.2 2-1.1 2.2-2.2.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"]
   ] as const;
 
   return (
@@ -1205,9 +1177,8 @@ function Footer() {
             <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/50">Connect</p>
             <div className="mt-4 grid gap-3 text-sm font-semibold text-white/90">
               {[
-                ["Instagram", "https://instagram.com/thinkinenglish"],
-                ["Facebook", "https://facebook.com/thinkinenglish"],
-                ["YouTube", "https://youtube.com/@thinkinenglish"],
+                ["Instagram", "https://www.instagram.com/thinknspeak_in_english"],
+                ["YouTube", "https://www.youtube.com/@thinkinenglish1111"],
                 ["WhatsApp", "https://wa.me/919999999999"],
                 ["Email", "mailto:hello@thinkinenglish.in"]
               ].map(([label, href]) => (
@@ -1239,7 +1210,7 @@ function FloatingWhatsApp() {
         href="https://wa.me/919999999999"
         target="_blank"
         rel="noopener noreferrer"
-        
+
         whileTap={{ scale: 0.98 }}
         className="fixed bottom-5 right-5 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-gold text-navy shadow-sm md:inline-flex hover:bg-gold/90 transition-colors"
         aria-label="Chat on WhatsApp"
