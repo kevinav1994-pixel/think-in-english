@@ -8,7 +8,9 @@ import {
   useTransform,
   type Variants
 } from "motion/react";
-import { Testimonials } from "@/components/ui/testimonials-demo";
+import { lazy, Suspense } from "react";
+
+const Testimonials = lazy(() => import("@/components/ui/testimonials-demo").then(module => ({ default: module.Testimonials })));
 
 type IconName =
   | "spark"
@@ -365,15 +367,6 @@ function NavBar() {
               </a>
             ))}
           </nav>
-          <motion.a
-
-            whileTap={{ scale: 0.99 }}
-            href="https://wa.me/918714278397?text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
-            className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-sm transition-all gold-glow bg-primary text-primary-foreground hover:bg-primary/90"
-          >
-            Book Free Demo
-            <Icon path={icons.arrow} className="h-4 w-4" />
-          </motion.a>
         </div>
       </div>
     </motion.header>
@@ -593,8 +586,7 @@ function AboutSection() {
                 You can't lecture someone into fluency.
               </p>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
-                I didn’t build this for mass communication training. I built it because I kept seeing smart people lose interviews, miss opportunities, and stay silent in rooms where they should’ve spoken—just because they hesitated while speaking. Why do people hesitate while speaking? It’s not a lack of knowledge.
-                It’s overthinking, fear of judgment, and not knowing how to structure thoughts clearly in real time—especially during interviews, presentations, or conversations that matter. That’s exactly what we fix through real-time speaking practice and direct feedback.
+                I didn’t build this for mass communication. I built it after seeing capable people miss interviews and opportunities because they hesitated while speaking. Many knew the answers, but pressure, overthinking, or nervousness stopped them from saying it well. So this is simple—we help people speak better in real situations through practice, feedback, and confidence-building.
               </p>
             </div>
           </motion.div>
@@ -984,7 +976,9 @@ function TestimonialSection() {
             eyebrowClass="text-white/50"
             copyClass="text-white/70"
           />
-          <Testimonials />
+          <Suspense fallback={<div>Loading testimonials...</div>}>
+            <Testimonials />
+          </Suspense>
         </div>
       </div>
     </section>
@@ -1208,7 +1202,10 @@ function ContactSection() {
 function Footer() {
   const socialIcons = [
     ["Instagram", "https://www.instagram.com/thinknspeak_in_english", "M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zM12 7a5 5 0 100 10 5 5 0 000-10z"],
-    ["YouTube", "https://www.youtube.com/@thinkinenglish1111", "M22 12s0-3.4-.4-5c-.2-1.1-1.1-2-2.2-2.2C17.8 4.4 12 4.4 12 4.4s-5.8 0-7.4.4c-1.1.2-2 1.1-2.2 2.2C2 8.6 2 12 2 12s0 3.4.4 5c.2 1.1 1.1 2 2.2 2.2 1.6.4 7.4.4 7.4.4s5.8 0 7.4-.4c1.1-.2 2-1.1 2.2-2.2.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"]
+    ["YouTube", "https://www.youtube.com/@thinkinenglish1111", "M22 12s0-3.4-.4-5c-.2-1.1-1.1-2-2.2-2.2C17.8 4.4 12 4.4 12 4.4s-5.8 0-7.4.4c-1.1.2-2 1.1-2.2 2.2C2 8.6 2 12 2 12s0 3.4.4 5c.2 1.1 1.1 2 2.2 2.2 1.6.4 7.4.4 7.4.4s5.8 0 7.4-.4c1.1-.2 2-1.1 2.2-2.2.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"],
+    ["Twitter", "https://twitter.com/thinkinenglish", "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"],
+    ["LinkedIn", "https://www.linkedin.com/company/thinkinenglish", "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"],
+    ["Facebook", "https://www.facebook.com/thinkinenglish", "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"]
   ] as const;
 
   return (
@@ -1263,6 +1260,9 @@ function Footer() {
               {[
                 ["Instagram", "https://www.instagram.com/thinknspeak_in_english"],
                 ["YouTube", "https://www.youtube.com/@thinkinenglish1111"],
+                ["Twitter", "https://twitter.com/thinkinenglish"],
+                ["LinkedIn", "https://www.linkedin.com/company/thinkinenglish"],
+                ["Facebook", "https://www.facebook.com/thinkinenglish"],
                 ["WhatsApp", "https://wa.me/919999999999"],
                 ["Email", "mailto:hello@thinkinenglish.in"]
               ].map(([label, href]) => (
