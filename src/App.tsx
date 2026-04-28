@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, type FormEvent } from "react";
+import { useEffect, useState, useRef, lazy, Suspense } from "react";
 import emailjs from '@emailjs/browser';
 import {
   AnimatePresence,
@@ -8,7 +8,6 @@ import {
   useTransform,
   type Variants
 } from "motion/react";
-import { lazy, Suspense } from "react";
 
 const Testimonials = lazy(() => import("@/components/ui/testimonials-demo").then(module => ({ default: module.Testimonials })));
 
@@ -30,7 +29,7 @@ type IconName =
   | "layers"
   | "trend";
 
-type SectionIntroProps = {
+type SectionIntroProps = Readonly<{
   eyebrow: string;
   title: string;
   copy?: string;
@@ -39,7 +38,7 @@ type SectionIntroProps = {
   eyebrowClass?: string;
   titleClass?: string;
   copyClass?: string;
-};
+}>;
 
 type TrustItem = {
   icon: IconName;
@@ -241,8 +240,8 @@ const formats: FormatCard[] = [
 ];
 
 const isE2E =
-  typeof window !== "undefined" &&
-  new URLSearchParams(window.location.search).has("e2e");
+  globalThis.window !== undefined &&
+  new URLSearchParams(globalThis.window.location.search).has("e2e");
 
 const faqs = [
   [
@@ -293,7 +292,7 @@ const stagger = {
   }
 };
 
-function Icon({ path, className = "h-5 w-5" }: { path: string; className?: string }) {
+function Icon({ path, className = "h-5 w-5" }: Readonly<{ path: string; className?: string }>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d={path} />
@@ -310,14 +309,19 @@ function SectionIntro({
   eyebrowClass = "text-ink/70",
   titleClass = "text-navy",
   copyClass = "text-slate"
-}: SectionIntroProps) {
+}: Readonly<SectionIntroProps>) {
+  const computeClassName = () => {
+    if (align === "center") return "mx-auto max-w-3xl text-center";
+    return narrow ? "max-w-2xl" : "max-w-4xl";
+  };
+
   return (
     <motion.div
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
       variants={stagger}
-      className={align === "center" ? "mx-auto max-w-3xl text-center" : narrow ? "max-w-2xl" : "max-w-4xl"}
+      className={computeClassName()}
     >
       <motion.p variants={fadeUp} className={`mb-4 text-xs font-extrabold uppercase tracking-[0.28em] ${eyebrowClass}`}>
         {eyebrow}
@@ -356,9 +360,9 @@ function NavBar() {
             scrolled ? "bg-navy/95 py-2 backdrop-blur-md border-white/10 shadow-sm" : "bg-transparent py-3 border-transparent"
           ].join(" ")}
         >
-          <a href="#" className="font-serif text-2xl tracking-[0.01em] transition-colors text-white">
+          <button onClick={() => window.scrollTo(0, 0)} className="font-serif text-2xl tracking-[0.01em] transition-colors text-white hover:opacity-80" aria-label="Think in English - Home">
             <span className="text-gold">Think</span> in English
-          </a>
+          </button>
           <nav className="hidden items-center gap-8 md:flex">
             {navItems.map(([label, href]) => (
               <a key={label} href={href} className="group relative text-sm font-semibold transition-colors text-white/80 hover:text-white">
@@ -427,7 +431,7 @@ function Hero() {
           >
             English isn't just grammar.
             <span className="block mt-1">
-              It’s how you <span className="text-gold">shape your voice.</span>
+              It's how you{' '}<span className="text-gold">shape your voice.</span>
             </span>
           </motion.h1>
 
@@ -795,7 +799,7 @@ const glowVariants: Variants = {
   },
 };
 
-function CourseCard({ course }: { course: Course }) {
+function CourseCard({ course }: Readonly<{ course: Course }>) {
   return (
     <motion.article
       variants={cardVariants}
@@ -1050,7 +1054,7 @@ function ContactSection() {
   const [loading, setLoading] = useState<boolean>(false);
   const form = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if (!form.current) return;
 
@@ -1066,9 +1070,9 @@ function ContactSection() {
         setLoading(false);
         setSubmitted(true);
         form.current?.reset();
-        window.setTimeout(() => setSubmitted(false), 3000);
+        globalThis.setTimeout?.(() => setSubmitted(false), 3000);
       },
-      (error) => {
+      (error: { text?: string; message?: string }) => {
         setLoading(false);
         console.log('FAILED...', error.text);
         alert(`Failed to send message. Error: ${error.text || error.message || JSON.stringify(error)}`);
@@ -1077,10 +1081,19 @@ function ContactSection() {
   };
 
   const contactChips = [
-    ["WhatsApp", "+91 99999 99999", "https://wa.me/919999999999", "chat"],
-    ["Email", "hello@thinkinenglish.in", "mailto:hello@thinkinenglish.in", "mail"],
-    ["Call", "+91 99999 99999", "tel:+919999999999", "phone"]
+    ["WhatsApp & Call", "+91 99999 99999", "https://wa.me/919999999999", "chat"],
+    ["Email", "hello@thinkinenglish.in", "mailto:hello@thinkinenglish.in", "mail"]
   ] as const;
+
+  const getButtonText = () => {
+    if (loading) return "Sending...";
+    if (submitted) return "I'll be in touch soon";
+    return "Send directly to my inbox";
+  };
+
+  const getButtonIcon = () => {
+    return submitted ? icons.check : icons.arrow;
+  };
 
   return (
     <section id="contact" className={`section-shell ${sectionSpacing}`}>
@@ -1097,21 +1110,48 @@ function ContactSection() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                {contactChips.map(([label, value, href, icon]) => (
-                  <motion.a
-
-                    key={label}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-4 py-3 text-sm font-semibold text-white "
-                  >
-                    <span className="rounded-full bg-white/12 p-2">
-                      <Icon path={icons[icon]} className="h-4 w-4" />
-                    </span>
-                    <span>{label}: {value}</span>
-                  </motion.a>
-                ))}
+                {contactChips.map(([label, value, href, icon]) => {
+                  if (label === "WhatsApp & Call") {
+                    return (
+                      <div key={label} className="flex gap-3">
+                        <motion.a
+                          href="https://wa.me/919999999999"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+                        >
+                          <span className="rounded-full bg-white/12 p-2">
+                            <Icon path={icons.chat} className="h-4 w-4" />
+                          </span>
+                          <span>WhatsApp: {value}</span>
+                        </motion.a>
+                        <motion.a
+                          href="tel:+919999999999"
+                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+                        >
+                          <span className="rounded-full bg-white/12 p-2">
+                            <Icon path={icons.phone} className="h-4 w-4" />
+                          </span>
+                          <span>Call: {value}</span>
+                        </motion.a>
+                      </div>
+                    );
+                  }
+                  return (
+                    <motion.a
+                      key={label}
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+                    >
+                      <span className="rounded-full bg-white/12 p-2">
+                        <Icon path={icons[icon]} className="h-4 w-4" />
+                      </span>
+                      <span>{label}: {value}</span>
+                    </motion.a>
+                  );
+                })}
               </div>
 
 
@@ -1140,9 +1180,9 @@ function ContactSection() {
 
                 <form ref={form} onSubmit={handleSubmit} className="mt-10 grid gap-6">
                   <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40 flex items-center gap-4">
-                    <span className="flex-1 h-px bg-white/10"></span>
-                    Or send an email enquiry
-                    <span className="flex-1 h-px bg-white/10"></span>
+                    <span className="flex-1 h-px bg-white/10" />
+                    <span className="mx-3">Or send an email enquiry</span>
+                    <span className="flex-1 h-px bg-white/10" />
                   </p>
                   {[
                     ["Your Name", "text", "How should I address you?", "user_name"],
@@ -1183,8 +1223,8 @@ function ContactSection() {
                       loading ? "opacity-70 cursor-not-allowed" : ""
                     ].join(" ")}
                   >
-                    {loading ? "Sending..." : submitted ? "I'll be in touch soon" : "Send directly to my inbox"}
-                    <Icon path={submitted ? icons.check : icons.arrow} className="h-4 w-4" />
+                    {getButtonText()}
+                    <Icon path={getButtonIcon()} className="h-4 w-4" />
                   </motion.button>
                   <p className="text-center text-[13px] font-semibold text-white/50">I personally read and reply within hours.</p>
                 </form>
@@ -1212,9 +1252,9 @@ function Footer() {
     <footer className="border-t border-white/10 bg-navy py-12">
       <div className={`${pageContainer} grid gap-8 lg:grid-cols-[1.2fr_.8fr]`}>
         <div>
-          <a href="#" className="font-serif text-3xl text-white">
+          <button onClick={() => window.scrollTo(0, 0)} className="font-serif text-3xl text-white hover:opacity-80" aria-label="Think in English - Home">
             <span className="text-gold">Think</span> in English
-          </a>
+          </button>
           <p className="mt-4 max-w-xl text-sm leading-7 text-white/70">
             Premium, founder-led online English coaching for exam performance and practical confidence. Designed to feel serious, warm, and result-oriented from the first enquiry to the final class.
           </p>
