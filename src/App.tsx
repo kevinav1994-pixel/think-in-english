@@ -592,6 +592,9 @@ function AboutSection() {
               <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
                 I didn’t build this for mass communication. I built it after seeing capable people miss interviews and opportunities because they hesitated while speaking. Many knew the answers, but pressure, overthinking, or nervousness stopped them from saying it well. So this is simple—we help people speak better in real situations through practice, feedback, and confidence-building.
               </p>
+              <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
+                English fluency isn't about memorizing vocabulary lists or grammar rules. It's about developing the mental agility to express complex ideas spontaneously. Whether you're preparing for IELTS speaking tests, job interviews, or everyday professional communication, the key is building confidence through targeted practice that addresses your specific hesitation points. Our founder-led approach ensures personalized attention to every student's unique challenges and goals.
+              </p>
             </div>
           </motion.div>
 
@@ -684,7 +687,7 @@ function WhySection() {
         <SectionIntro
           eyebrow="My Approach"
           title="Premium without feeling distant. Personal without feeling casual."
-          copy="I don't believe in running a factory. The coaching is designed to feel dependable and distinctly human. That means honest feedback and a clear sense of progress."
+          copy="I don't believe in running a factory. The coaching is designed to feel dependable and distinctly human. That means honest feedback and a clear sense of progress. Every session is led by the founder himself, ensuring consistent quality and personalized attention. We focus on practical communication skills that transfer directly to real-world situations, whether you're preparing for international exams or professional presentations."
           titleClass="text-white"
           eyebrowClass="text-white/50"
           copyClass="text-white/70"
@@ -1118,7 +1121,7 @@ function ContactSection() {
                           href="https://wa.me/919999999999"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white"
                         >
                           <span className="rounded-full bg-white/12 p-2">
                             <Icon path={icons.chat} className="h-4 w-4" />
@@ -1127,7 +1130,7 @@ function ContactSection() {
                         </motion.a>
                         <motion.a
                           href="tel:+919999999999"
-                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white"
                         >
                           <span className="rounded-full bg-white/12 p-2">
                             <Icon path={icons.phone} className="h-4 w-4" />
@@ -1143,7 +1146,7 @@ function ContactSection() {
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+                      className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white"
                     >
                       <span className="rounded-full bg-white/12 p-2">
                         <Icon path={icons[icon]} className="h-4 w-4" />
@@ -1366,6 +1369,7 @@ export default function App() {
       <div className="min-h-screen">
         <NavBar />
         <main>
+          <h1 className="sr-only">Think in English - Premium IELTS, PTE & English Coaching</h1>
           <Hero />
           <TrustStrip />
           <AboutSection />
