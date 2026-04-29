@@ -31,12 +31,12 @@ type IconName =
 type SectionIntroProps = Readonly<{
   eyebrow: string;
   title: string;
-  copy?: string;
-  align?: "left" | "center";
-  narrow?: boolean;
-  eyebrowClass?: string;
-  titleClass?: string;
-  copyClass?: string;
+  copy - : string;
+  align - : "left" | "center";
+  narrow - : boolean;
+  eyebrowClass - : string;
+  titleClass - : string;
+  copyClass - : string;
 }>;
 
 type TrustItem = {
@@ -54,16 +54,16 @@ type WhyItem = {
   copy: string;
   icon: IconName;
   tone: string;
-  featured?: boolean;
+  featured - : boolean;
 };
 
 type Course = {
   name: string;
   tag: string;
   outcome: string;
-  duration?: string;
-  price?: string;
-  cta?: string;
+  duration - : string;
+  price - : string;
+  cta - : string;
   accent: string;
 };
 
@@ -105,7 +105,7 @@ const navItems = [
 ] as const;
 
 const trustItems: TrustItem[] = [
-  { icon: "shield", text: "No artificial politeness—just clear, useful corrections." },
+  { icon: "shield", text: "No artificial politeness - just clear, useful corrections." },
   { icon: "clock", text: "We figure out a routine that you can actually stick to." },
   { icon: "users", text: "I pay attention to the exact moments you stumble." },
   { icon: "chat", text: "We break the habit of thinking in your native language." },
@@ -114,9 +114,9 @@ const trustItems: TrustItem[] = [
 ];
 
 const aboutStats: AboutStat[] = [
-  { value: "No Generic Communication Templates", note: "I don’t give you pre-written interview answers or PDFs. We build your responses together so you can speak confidently in real situations—without memorizing scripts." },
-  { value: " Live Speaking Correction (Real-Time Feedback)", note: "If you hesitate, mispronounce, or lose clarity while speaking, I stop you immediately and correct it on the spot—so you improve faster, not later." },
-  { value: "Flexible Learning Pace (Based on Your Progress)", note: "How long does it take to improve communication skills? It depends. Some people improve in a week, others take months—we set the pace based on your actual progress." },
+  { value: "No Generic Communication Templates", note: "I don't give you pre-written interview answers or PDFs. We build your responses together so you can speak confidently in real situations - without memorizing scripts." },
+  { value: " Live Speaking Correction (Real-Time Feedback)", note: "If you hesitate, mispronounce, or lose clarity while speaking, I stop you immediately and correct it on the spot - so you improve faster, not later." },
+  { value: "Flexible Learning Pace (Based on Your Progress)", note: "How long does it take to improve communication skills - It depends. Some people improve in a week, others take months - we set the pace based on your actual progress." },
   { value: "One-on-One or Small Group Coaching (No Crowded Classes)", note: "No crowded batches. I work with individuals or small groups so I can identify exactly where you hesitate and fix it personally." }
 ];
 
@@ -142,7 +142,7 @@ const whyItems: WhyItem[] = [
   },
   {
     title: "Built around your chaotic adult schedule.",
-    copy: "Whether you're finishing college, managing a 9-to-5, or juggling a family—this isn't a rigid school. We find timings that let you remain consistent without burning out.",
+    copy: "Whether you're finishing college, managing a 9-to-5, or juggling a family - this isn't a rigid school. We find timings that let you remain consistent without burning out.",
     icon: "clock",
     tone: "bg-[#EEF3ED]"
   }
@@ -194,24 +194,24 @@ const courses: Course[] = [
   {
     name: "Crash Lessons",
     tag: "Fast fixes",
-    outcome: "Brush up fast with targeted 2–5 hour sessions. Perfect before exams or interviews. Fast fixes for real problems.",
-    price: "Starting from ₹50+",
+    outcome: "Brush up fast with targeted 2-5 hour sessions. Perfect before exams or interviews. Fast fixes for real problems.",
+    price: "Starting from Rs. 50+",
     cta: "Book Now",
     accent: "from-[#f5e7dc] via-[#fffaf5] to-white"
   },
   {
     name: "Single Module Sessions",
     tag: "Pay per session",
-    outcome: "Struggling with one specific part? Fix it without committing to a full course. Pay per session. Learn what you need.",
-    price: "Starting from ₹50+",
+    outcome: "Struggling with one specific part - Fix it without committing to a full course. Pay per session. Learn what you need.",
+    price: "Starting from Rs. 50+",
     cta: "Book Now",
     accent: "from-[#f5e7dc] via-[#fffaf5] to-white"
   },
   {
     name: "Writing Corrections",
     tag: "No commitment",
-    outcome: "Submit your writing. Get precise corrections and improvements—no fluff. No long-term commitment. Just results.",
-    price: "Starting from ₹50+",
+    outcome: "Submit your writing. Get precise corrections and improvements - no fluff. No long-term commitment. Just results.",
+    price: "Starting from Rs. 50+",
     cta: "Book Now",
     accent: "from-[#f5e7dc] via-[#fffaf5] to-white"
   }
@@ -244,27 +244,27 @@ const isE2E =
 
 const faqs = [
   [
-    "Do you just hand out IELTS and PTE templates?",
+    "Do you just hand out IELTS and PTE templates - ",
     "No. Templates only get you so far before the algorithm flags you. I teach you the structure, then correct exactly how you apply it so it sounds completely natural."
   ],
   [
-    "What if I'm extremely hesitant to speak in English?",
+    "What if I'm extremely hesitant to speak in English - ",
     "That's exactly why we do small groups or 1:1. You won't be judged. We will literally pause the class, fix the sentence structure together, and try again until you don't even have to think about it."
   ],
   [
-    "How is this different from local batch coaching?",
+    "How is this different from local batch coaching - ",
     "I teach every class. There are no junior tutors or 50-student batches where you never get to speak. If you write an essay, I am the one grading it line by line."
   ],
   [
-    "I work late. Can I still attend?",
+    "I work late. Can I still attend - ",
     "Yes. Half my students are working professionals. We offer flexible early morning, late evening, and weekend slots so you don't have to miss meetings."
   ],
   [
-    "Can I choose one-to-one classes instead of group sessions?",
+    "Can I choose one-to-one classes instead of group sessions - ",
     "Absolutely. If you have severe time constraints or very specific weaknesses, 1:1 is the fastest way to fix them."
   ],
   [
-    "Can I try a class before committing?",
+    "Can I try a class before committing - ",
     "Yes. Book a free demo class. Let's look at where you currently are, and I'll tell you honestly exactly what it will take to hit your goal."
   ]
 ] as const;
@@ -291,7 +291,7 @@ const stagger = {
   }
 };
 
-function Icon({ path, className = "h-5 w-5" }: Readonly<{ path: string; className?: string }>) {
+function Icon({ path, className = "h-5 w-5" }: Readonly<{ path: string; className - : string }>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d={path} />
@@ -311,7 +311,7 @@ function SectionIntro({
 }: Readonly<SectionIntroProps>) {
   const computeClassName = () => {
     if (align === "center") return "mx-auto max-w-3xl text-center";
-    return narrow ? "max-w-2xl" : "max-w-4xl";
+    return narrow  - "max-w-2xl" : "max-w-4xl";
   };
 
   return (
@@ -328,7 +328,7 @@ function SectionIntro({
       <motion.h2 variants={fadeUp} className={`text-balance font-serif text-4xl leading-tight md:text-5xl ${titleClass}`}>
         {title}
       </motion.h2>
-      {copy ? (
+      {copy  - (
         <motion.p variants={fadeUp} className={`mt-5 text-base leading-8 md:text-lg ${copyClass}`}>
           {copy}
         </motion.p>
@@ -358,14 +358,14 @@ function NavBar() {
 
   return (
     <motion.header
-      animate={{ paddingTop: scrolled ? 8 : 18, paddingBottom: scrolled ? 8 : 18 }}
+      animate={{ paddingTop: scrolled  - 8 : 18, paddingBottom: scrolled  - 8 : 18 }}
       className="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
     >
       <div className={pageContainer}>
         <div
           className={[
             "flex items-center justify-between rounded-full border px-4 transition-all duration-300 md:px-6",
-            scrolled ? "bg-navy/95 py-2 backdrop-blur-md border-white/10 shadow-sm" : "bg-transparent py-3 border-transparent"
+            scrolled  - "bg-navy/95 py-2 backdrop-blur-md border-white/10 shadow-sm" : "bg-transparent py-3 border-transparent"
           ].join(" ")}
         >
           <button onClick={() => window.scrollTo(0, 0)} className="font-serif text-2xl tracking-[0.01em] transition-colors text-white hover:opacity-80" aria-label="Think in English - Home">
@@ -395,12 +395,12 @@ function Hero() {
       <motion.div
         animate={
           isE2E
-            ? { opacity: 0.55, scale: 1 }
+             - { opacity: 0.55, scale: 1 }
             : { opacity: [0.45, 0.75, 0.45], scale: [1, 1.06, 1] }
         }
         transition={
           isE2E
-            ? { duration: 0 }
+             - { duration: 0 }
             : { duration: 8, repeat: Infinity, ease: "easeInOut" }
         }
         className="absolute left-[-12%] top-16 h-72 w-72 rounded-full bg-goldTint/50 blur-3xl"
@@ -408,17 +408,17 @@ function Hero() {
       <motion.div
         animate={
           isE2E
-            ? { opacity: 0.55, scale: 1 }
+             - { opacity: 0.55, scale: 1 }
             : { opacity: [0.42, 0.7, 0.42], scale: [1, 1.08, 1] }
         }
         transition={
           isE2E
-            ? { duration: 0 }
+             - { duration: 0 }
             : { duration: 9.5, repeat: Infinity, ease: "easeInOut" }
         }
         className="absolute right-[-8%] top-20 h-80 w-80 rounded-full bg-navy/80 blur-3xl"
       />
-      <motion.div style={isE2E ? undefined : { y: yParticle }} className="absolute inset-0 hidden md:block">
+      <motion.div style={isE2E  - undefined : { y: yParticle }} className="absolute inset-0 hidden md:block">
         <span className="absolute left-[10%] top-[22%] h-2.5 w-2.5 rounded-full bg-gold/40 blur-[1px]" />
         <span className="absolute left-[19%] top-[34%] h-1.5 w-1.5 rounded-full bg-white/20" />
         <span className="absolute right-[16%] top-[24%] h-3 w-3 rounded-full bg-goldTint/70 blur-[1px]" />
@@ -442,7 +442,7 @@ function Hero() {
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-xl">
-            You probably don't need a big institute or another generic textbook to get better. You just need someone to sit across from you, hear exactly where you stumble, and correct it right then and there. Whether you need a specific IELTS score or you just want to stop translating everything in your head before you speak—I'll just work with you until it finally clicks.
+            You probably don't need a big institute or another generic textbook to get better. You just need someone to sit across from you, hear exactly where you stumble, and correct it right then and there. Whether you need a specific IELTS score or you just want to stop translating everything in your head before you speak - I'll just work with you until it finally clicks.
           </motion.p>
 
           <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-sm leading-7 text-white/62 md:text-base">
@@ -457,7 +457,7 @@ function Hero() {
             {["Live Classes", "Flexible Timings", "Personal Guidance"].map((item, index) => (
               <span key={item} className="flex items-center gap-3">
                 {item}
-                {index < 2 ? <span className="text-gold">/</span> : null}
+                {index < 2  - <span className="text-gold">/</span> : null}
               </span>
             ))}
           </motion.div>
@@ -501,8 +501,8 @@ function Hero() {
           className="relative"
         >
           <motion.div
-            style={isE2E ? undefined : { y: yImage }}
-            whileHover={isE2E ? undefined : { scale: 1.01, rotate: -0.5 }}
+            style={isE2E  - undefined : { y: yImage }}
+            whileHover={isE2E  - undefined : { scale: 1.01, rotate: -0.5 }}
             className="relative mx-auto max-w-[560px] rounded-xl border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-md origin-bottom"
           >
             <div className="absolute -left-7 top-12 hidden h-52 w-40 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md lg:block rotate-3" />
@@ -510,11 +510,11 @@ function Hero() {
             <div className="relative overflow-hidden rounded-xl">
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
               <img
-                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1100&q=70"
+                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=1100&q=70"
                 srcSet="
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=640&q=70 640w,
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=960&q=70 960w,
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1280&q=70 1280w
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=640&q=70 640w,
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=960&q=70 960w,
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=1280&q=70 1280w
                 "
                 sizes="(max-width: 1024px) 100vw, 560px"
                 alt="Founder mentor of Think in English"
@@ -601,7 +601,7 @@ function AboutSection() {
                 You can't lecture someone into fluency.
               </p>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
-                I didn’t build this for mass communication. I built it after seeing capable people miss interviews and opportunities because they hesitated while speaking. Many knew the answers, but pressure, overthinking, or nervousness stopped them from saying it well. So this is simple—we help people speak better in real situations through practice, feedback, and confidence-building.
+                I didn't build this for mass communication. I built it after seeing capable people miss interviews and opportunities because they hesitated while speaking. Many knew the answers, but pressure, overthinking, or nervousness stopped them from saying it well. So this is simple - we help people speak better in real situations through practice, feedback, and confidence-building.
               </p>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
                 English fluency isn't about memorizing vocabulary lists or grammar rules. It's about developing the mental agility to express complex ideas spontaneously. Whether you're preparing for IELTS speaking tests, job interviews, or everyday professional communication, the key is building confidence through targeted practice that addresses your specific hesitation points. Our founder-led approach ensures personalized attention to every student's unique challenges and goals.
@@ -638,11 +638,11 @@ function AboutSection() {
           <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
             <div className="grid gap-6">
               <img
-                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=70"
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=900&q=70"
                 srcSet="
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=70 500w,
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=70 800w,
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=70 1000w
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=500&q=70 500w,
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=800&q=70 800w,
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=1000&q=70 1000w
                 "
                 sizes="(max-width: 768px) 100vw, 420px"
                 alt="Live founder-led English coaching session"
@@ -711,7 +711,7 @@ function WhySection() {
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {whyItems.map((item, index) => {
             const isWide = index === 0 || index === 3;
-            const spanClass = isWide ? "md:col-span-2 xl:col-span-2" : "col-span-1";
+            const spanClass = isWide  - "md:col-span-2 xl:col-span-2" : "col-span-1";
             return (
               <motion.article
                 key={item.title}
@@ -723,7 +723,7 @@ function WhySection() {
                 className={[
                   "group flex flex-col justify-between gap-8 rounded-xl border border-white/10 bg-white/5 p-8 sm:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.1)] backdrop-blur-md transition-all",
                   spanClass,
-                  isWide ? "lg:flex-row lg:items-center" : ""
+                  isWide  - "lg:flex-row lg:items-center" : ""
                 ].join(" ")}
               >
                 <div>
@@ -732,7 +732,7 @@ function WhySection() {
                   </div>
                   <h3 className="text-2xl font-serif leading-tight text-white lg:text-[1.8rem]">{item.title}</h3>
                 </div>
-                <div className={isWide ? "lg:max-w-md" : ""}>
+                <div className={isWide  - "lg:max-w-md" : ""}>
                   <p className="text-sm leading-8 text-white/70 md:text-base">{item.copy}</p>
                   <div className="mt-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.15em] text-white/50">
                     <span className="h-px w-10 bg-gold/50" />
@@ -846,7 +846,7 @@ function CourseCard({ course }: Readonly<{ course: Course }>) {
         <p className="mt-10 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">Directed correction</p>
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-6">
           <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">{course.price ? "Price" : "Duration"}</p>
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">{course.price  - "Price" : "Duration"}</p>
             <p className="mt-1 text-sm font-bold text-white">{course.price || course.duration}</p>
           </div>
           <div className="inline-flex items-center gap-2 text-sm font-bold text-white group">
@@ -868,7 +868,7 @@ function CoursesSection() {
         <SectionIntro
           eyebrow="Courses"
           title="Programs built for strict score goals and unshakeable confidence."
-          copy="Standardized tests shouldn't feel like a casino. We focus relentlessly on the exact rubrics so you don't just 'try' the exam—you control it."
+          copy="Standardized tests shouldn't feel like a casino. We focus relentlessly on the exact rubrics so you don't just 'try' the exam - you control it."
           titleClass="text-white"
           eyebrowClass="text-white/50"
           copyClass="text-white/70"
@@ -1043,16 +1043,16 @@ function FAQSection() {
               >
                 <button
                   type="button"
-                  onClick={() => setOpen(isOpen ? -1 : index)}
+                  onClick={() => setOpen(isOpen  - -1 : index)}
                   className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left md:px-7"
                 >
                   <span className="text-base font-bold leading-7 text-white md:text-lg">{question}</span>
-                  <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="text-white">
-                    <Icon path={isOpen ? "M5 12h14" : icons.plus} className="h-5 w-5" />
+                  <motion.span animate={{ rotate: isOpen  - 180 : 0 }} transition={{ duration: 0.3 }} className="text-white">
+                    <Icon path={isOpen  - "M5 12h14" : icons.plus} className="h-5 w-5" />
                   </motion.span>
                 </button>
                 <AnimatePresence initial={false}>
-                  {isOpen ? (
+                  {isOpen  - (
                     <motion.div
                       key="content"
                       initial={{ height: 0, opacity: 0 }}
@@ -1072,57 +1072,6 @@ function FAQSection() {
     </section>
   );
 }
-
-function SEOContentSection() {
-  return (
-    <section id="english-coaching-guide" className={`section-shell ${sectionSpacing}`}>
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <SectionIntro
-          eyebrow="English coaching guide"
-          title="What this coaching is actually designed to improve."
-          copy="If you are comparing spoken English classes, IELTS coaching, or PTE training, the real question is not how many classes you get. It is whether each class removes a specific block that is stopping you from speaking clearly, writing logically, or scoring consistently."
-          align="center"
-          titleClass="text-white"
-          eyebrowClass="text-white/50"
-          copyClass="text-white/70"
-        />
-
-        <div className="mt-14 grid gap-6">
-          <article className="rounded-xl border border-white/10 bg-white/5 p-7 backdrop-blur-md md:p-9">
-            <h3 className="font-serif text-3xl leading-tight text-white">Who this is for</h3>
-            <p className="mt-4 text-base leading-8 text-white/72">
-              This program is built for students preparing for IELTS, PTE, CELPIP, Duolingo, and LanguageCert, but it is equally useful for professionals who need stronger workplace English. Some learners struggle with hesitation in speaking tests. Others write ideas that make sense in their head but fall apart under time pressure. Many working adults understand English well enough to read and listen, yet still pause in meetings, interviews, or presentations because they are translating every sentence before they say it. The coaching focuses on that friction point and turns it into a repeatable practice system.
-            </p>
-          </article>
-
-          <article className="rounded-xl border border-white/10 bg-white/5 p-7 backdrop-blur-md md:p-9">
-            <h3 className="font-serif text-3xl leading-tight text-white">How classes are structured</h3>
-            <p className="mt-4 text-base leading-8 text-white/72">
-              Each learner starts with goal mapping. We look at your current level, the score or communication outcome you need, and the exact situations where you break rhythm. From there, classes are built around correction, repetition, and clarity. Instead of broad lectures, sessions focus on speaking drills, writing reviews, pronunciation adjustments, vocabulary control, and practical feedback you can apply in the next class. This approach works well for one-to-one mentoring and for small groups because both formats allow direct observation instead of passive listening.
-            </p>
-            <h4 className="mt-8 text-lg font-semibold text-white">Why live correction matters</h4>
-            <p className="mt-3 text-base leading-8 text-white/72">
-              Delayed feedback is one of the biggest reasons learners stay stuck. When a mistake is corrected at the exact moment it appears, the learner remembers the pattern, understands the fix, and can repeat it immediately. That short loop is more useful than general advice at the end of class because it connects the correction to the actual hesitation, pronunciation issue, or writing habit that caused it.
-            </p>
-          </article>
-
-          <article className="rounded-xl border border-white/10 bg-white/5 p-7 backdrop-blur-md md:p-9">
-            <h3 className="font-serif text-3xl leading-tight text-white">What outcomes learners usually want</h3>
-            <p className="mt-4 text-base leading-8 text-white/72">
-              Most people come in with one of three goals. The first is an exam result: a higher IELTS band, a better PTE score, or a cleaner speaking performance under timed conditions. The second is professional fluency: speaking with more confidence in interviews, calls, and workplace discussions. The third is general communication comfort: reducing hesitation, improving sentence flow, and sounding more natural in daily English conversations. All three depend on practice that is specific, measurable, and responsive to the learner's real errors rather than generic course material.
-            </p>
-            <h4 className="mt-8 text-lg font-semibold text-white">What makes this different from batch coaching</h4>
-            <p className="mt-3 text-base leading-8 text-white/72">
-              Large coaching batches often leave quieter learners invisible. A founder-led model is more accountable because the person designing the program is also listening to the student, correcting the student, and reviewing the student’s written work. That consistency helps learners build trust faster and understand exactly what to improve between sessions.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-void SEOContentSection;
 
 function ContactSection() {
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -1148,10 +1097,10 @@ function ContactSection() {
         () => {
           setLoading(false);
           setSubmitted(true);
-          form.current?.reset();
-          globalThis.setTimeout?.(() => setSubmitted(false), 3000);
+          form.current - .reset();
+          globalThis.setTimeout - .(() => setSubmitted(false), 3000);
         },
-        (error: { text?: string; message?: string }) => {
+        (error: { text - : string; message - : string }) => {
           setLoading(false);
           console.log("FAILED...", error.text);
           alert(`Failed to send message. Error: ${error.text || error.message || JSON.stringify(error)}`);
@@ -1171,7 +1120,7 @@ function ContactSection() {
   };
 
   const getButtonIcon = () => {
-    return submitted ? icons.check : icons.arrow;
+    return submitted  - icons.check : icons.arrow;
   };
 
   return (
@@ -1220,8 +1169,8 @@ function ContactSection() {
                     <motion.a
                       key={label}
                       href={href}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={href.startsWith("http")  - "_blank" : undefined}
+                      rel={href.startsWith("http")  - "noopener noreferrer" : undefined}
                       className="inline-flex min-h-12 w-full items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white sm:w-auto"
                     >
                       <span className="rounded-full bg-white/12 p-2">
@@ -1248,7 +1197,7 @@ function ContactSection() {
 
                 <motion.a
 
-                  href="https://wa.me/918714278397?text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
+                  href="https://wa.me/918714278397 - text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 flex min-h-12 w-full items-center justify-center gap-3 rounded-full border border-gold bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md shadow-[0_12px_30px_rgba(1,54,72,0.08)] transition-all hover:bg-white/10 sm:w-fit"
@@ -1264,10 +1213,10 @@ function ContactSection() {
                     <span className="flex-1 h-px bg-white/10" />
                   </p>
                   {[
-                    ["Your Name", "text", "How should I address you?", "user_name"],
+                    ["Your Name", "text", "How should I address you - ", "user_name"],
                     ["WhatsApp Number", "tel", "So I can reach out directly", "user_phone"],
                     ["Your Email ID", "email", "So I can send you a mail", "user_email"],
-                    ["What are you struggling with?", "text", "Example: IELTS Writing or spoken hesitation", "message"]
+                    ["What are you struggling with - ", "text", "Example: IELTS Writing or spoken hesitation", "message"]
                   ].map(([label, type, placeholder, name]) => (
                     <label key={label} className="grid gap-2 text-sm font-bold text-white">
                       {label}
@@ -1276,14 +1225,14 @@ function ContactSection() {
                         type={type}
                         placeholder={placeholder}
                         required
-                        onInput={name === "user_phone" ? (e) => { e.currentTarget.value = e.currentTarget.value.replace(/[^0-9+]/g, '') } : undefined}
+                        onInput={name === "user_phone"  - (e) => { e.currentTarget.value = e.currentTarget.value.replace(/[^0-9+]/g, '') } : undefined}
                         className="rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-sm font-medium text-white placeholder-white/40 outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)]"
                       />
                     </label>
                   ))}
 
                   <label className="grid gap-2 text-sm font-bold text-white">
-                    When is your exam? (If applicable)
+                    When is your exam - (If applicable)
                     <textarea
                       name="exam_date"
                       placeholder="Give me an idea of your timeline and constraints."
@@ -1298,8 +1247,8 @@ function ContactSection() {
                     disabled={loading || submitted}
                     className={[
                       "mt-4 inline-flex items-center justify-center gap-3 rounded-full px-8 py-5 text-[13px] font-extrabold uppercase tracking-[0.16em] shadow-sm transition-colors",
-                      submitted ? "bg-white text-navy" : "bg-gold text-white hover:bg-gold/90",
-                      loading ? "opacity-70 cursor-not-allowed" : ""
+                      submitted  - "bg-white text-navy" : "bg-gold text-white hover:bg-gold/90",
+                      loading  - "opacity-70 cursor-not-allowed" : ""
                     ].join(" ")}
                   >
                     {getButtonText()}
@@ -1388,8 +1337,8 @@ function Footer() {
                 <a
                   key={label}
                   href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target={href.startsWith("http")  - "_blank" : undefined}
+                  rel={href.startsWith("http")  - "noopener noreferrer" : undefined}
                   className="py-1 transition hover:text-white hover:translate-x-1"
                 >
                   {label}
