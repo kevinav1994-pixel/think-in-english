@@ -64,6 +64,10 @@
     body {
       padding-bottom: 82px;
     }
+
+    body::before {
+      display: none;
+    }
   }
 }
 

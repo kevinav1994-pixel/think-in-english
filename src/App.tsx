@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef, lazy, Suspense } from "react";
-import emailjs from '@emailjs/browser';
 import {
   AnimatePresence,
   MotionConfig,
@@ -123,7 +122,7 @@ const aboutStats: AboutStat[] = [
 
 const whyItems: WhyItem[] = [
   {
-    title: "No eneric syllabus. We practice only what you need.",
+    title: "No generic syllabus. We practice only what you need.",
     copy: "We don't waste time on chapters you already know. On day one, we find your weak spots, map your goal, and work exclusively on what will actually move the needle for your exam or fluency.",
     icon: "target",
     tone: "bg-goldTint"
@@ -342,10 +341,19 @@ function NavBar() {
   const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 18);
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 18);
+      });
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
@@ -427,7 +435,7 @@ function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="text-balance max-w-3xl font-serif text-[3.6rem] leading-[1.05] tracking-[-0.02em] text-white lg:text-[5.5rem]"
+            className="text-balance max-w-3xl font-serif text-[2.55rem] leading-[1.02] tracking-[-0.02em] text-white sm:text-[3.2rem] lg:text-[5.5rem]"
           >
             English isn't just grammar.
             <span className="block mt-1">
@@ -437,6 +445,10 @@ function Hero() {
 
           <motion.p variants={fadeUp} className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-xl">
             You probably don't need a big institute or another generic textbook to get better. You just need someone to sit across from you, hear exactly where you stumble, and correct it right then and there. Whether you need a specific IELTS score or you just want to stop translating everything in your head before you speak—I'll just work with you until it finally clicks.
+          </motion.p>
+
+          <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-sm leading-7 text-white/62 md:text-base">
+            This coaching is built for IELTS, PTE, CELPIP, Duolingo, LanguageCert, interview preparation, and day-to-day professional English. The focus is always the same: remove the exact hesitation points that are affecting your score, your confidence, or your clarity.
           </motion.p>
 
           <motion.p variants={fadeUp} className="mt-5 text-sm font-semibold uppercase tracking-[0.22em] text-white/50">
@@ -452,12 +464,12 @@ function Hero() {
             ))}
           </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <motion.a
 
               whileTap={{ scale: 0.99 }}
               href="#contact"
-              className="gold-glow inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-navy shadow-sm transition hover:bg-white/90"
+              className="gold-glow inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-navy shadow-sm transition hover:bg-white/90 sm:min-h-0 sm:w-auto"
             >
               Let's figure out what's holding you back
               <Icon path={icons.arrow} className="h-4 w-4" />
@@ -467,7 +479,7 @@ function Hero() {
               href="https://wa.me/919999999999"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/10"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/10 sm:min-h-0 sm:w-auto"
             >
               Or just drop me a quick text
               <Icon path={icons.chat} className="h-4 w-4" />
@@ -545,9 +557,9 @@ function TrustStrip() {
       <div className={`${pageContainer}`}>
         <div className="border-b border-white/10 pb-6">
           <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">What you can expect</p>
-          <p className="mt-4 font-serif text-3xl leading-tight text-white max-w-3xl">
+          <h2 className="mt-4 font-serif text-3xl leading-tight text-white max-w-3xl">
             Most people just need someone to sit with them and untangle their hesitation.
-          </p>
+          </h2>
         </div>
         <div className="mt-8 grid gap-x-8 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
           {list.map((item, index) => (
@@ -594,6 +606,9 @@ function AboutSection() {
               </p>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
                 English fluency isn't about memorizing vocabulary lists or grammar rules. It's about developing the mental agility to express complex ideas spontaneously. Whether you're preparing for IELTS speaking tests, job interviews, or everyday professional communication, the key is building confidence through targeted practice that addresses your specific hesitation points. Our founder-led approach ensures personalized attention to every student's unique challenges and goals.
+              </p>
+              <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
+                Some learners need a strict exam roadmap. Others need better workplace communication or more natural spoken English for interviews, presentations, and meetings. The coaching changes based on that outcome, but the method stays practical: observe the friction, correct it live, and repeat until the improvement becomes natural under pressure.
               </p>
             </div>
           </motion.div>
@@ -687,7 +702,7 @@ function WhySection() {
         <SectionIntro
           eyebrow="My Approach"
           title="Premium without feeling distant. Personal without feeling casual."
-          copy="I don't believe in running a factory. The coaching is designed to feel dependable and distinctly human. That means honest feedback and a clear sense of progress. Every session is led by the founder himself, ensuring consistent quality and personalized attention. We focus on practical communication skills that transfer directly to real-world situations, whether you're preparing for international exams or professional presentations."
+          copy="I don't believe in running a factory. The coaching is designed to feel dependable and distinctly human. That means honest feedback and a clear sense of progress. Every session is led directly by the founder, ensuring consistent quality and personalized attention. We focus on practical communication skills that transfer directly to real-world situations, whether you're preparing for international exams or professional presentations."
           titleClass="text-white"
           eyebrowClass="text-white/50"
           copyClass="text-white/70"
@@ -885,6 +900,9 @@ function CoursesSection() {
           <p className="mt-3 text-lg text-white/70">
             Pay per session. Learn what you need.
           </p>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/62 md:text-base">
+            If you only need writing correction, a crash session before an exam, or help with one module, you should not have to join a full batch. This part of the program exists for targeted fixes with minimal wasted time.
+          </p>
         </motion.div>
 
         <motion.div
@@ -910,7 +928,7 @@ function FormatSection() {
         <SectionIntro
           eyebrow="Class structure"
           title="We mold the class around your calendar, so you don't burn out."
-          copy="I don't force you into rigid batches. Whether you want intense 1:1 focus or a consistent small group, we figure out a structure that you actually look forward to attending."
+          copy="I don't force you into rigid batches. Whether you want intense 1:1 focus or a consistent small group, we figure out a structure that you actually look forward to attending. Every class format is built to keep feedback immediate, progress visible, and practice aligned with your current level."
           eyebrowClass="text-white/52"
           titleClass="text-white"
           copyClass="text-white/72"
@@ -962,6 +980,9 @@ function FormatSection() {
                 </div>
               ))}
             </div>
+            <p className="mt-8 text-sm leading-7 text-white/68">
+              The point of this structure is simple: delayed feedback keeps bad habits alive. Live correction shortens the learning loop, which is why students usually feel progress faster in speaking confidence, sentence flow, and exam control.
+            </p>
           </motion.div>
         </div>
       </div>
@@ -1001,7 +1022,7 @@ function FAQSection() {
         <SectionIntro
           eyebrow="Clear answers"
           title="Questions people usually ask in the demo class."
-          copy="I believe in complete transparency. If you have any other questions, you can always WhatsApp me directly."
+          copy="I believe in complete transparency. If you have any other questions, you can always WhatsApp me directly. Most learners want to know how the classes work, whether they need one-to-one support or a small group, and how quickly they can expect measurable improvement."
           align="center"
           titleClass="text-white"
           eyebrowClass="text-white/50"
@@ -1052,6 +1073,57 @@ function FAQSection() {
   );
 }
 
+function SEOContentSection() {
+  return (
+    <section id="english-coaching-guide" className={`section-shell ${sectionSpacing}`}>
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <SectionIntro
+          eyebrow="English coaching guide"
+          title="What this coaching is actually designed to improve."
+          copy="If you are comparing spoken English classes, IELTS coaching, or PTE training, the real question is not how many classes you get. It is whether each class removes a specific block that is stopping you from speaking clearly, writing logically, or scoring consistently."
+          align="center"
+          titleClass="text-white"
+          eyebrowClass="text-white/50"
+          copyClass="text-white/70"
+        />
+
+        <div className="mt-14 grid gap-6">
+          <article className="rounded-xl border border-white/10 bg-white/5 p-7 backdrop-blur-md md:p-9">
+            <h3 className="font-serif text-3xl leading-tight text-white">Who this is for</h3>
+            <p className="mt-4 text-base leading-8 text-white/72">
+              This program is built for students preparing for IELTS, PTE, CELPIP, Duolingo, and LanguageCert, but it is equally useful for professionals who need stronger workplace English. Some learners struggle with hesitation in speaking tests. Others write ideas that make sense in their head but fall apart under time pressure. Many working adults understand English well enough to read and listen, yet still pause in meetings, interviews, or presentations because they are translating every sentence before they say it. The coaching focuses on that friction point and turns it into a repeatable practice system.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-white/10 bg-white/5 p-7 backdrop-blur-md md:p-9">
+            <h3 className="font-serif text-3xl leading-tight text-white">How classes are structured</h3>
+            <p className="mt-4 text-base leading-8 text-white/72">
+              Each learner starts with goal mapping. We look at your current level, the score or communication outcome you need, and the exact situations where you break rhythm. From there, classes are built around correction, repetition, and clarity. Instead of broad lectures, sessions focus on speaking drills, writing reviews, pronunciation adjustments, vocabulary control, and practical feedback you can apply in the next class. This approach works well for one-to-one mentoring and for small groups because both formats allow direct observation instead of passive listening.
+            </p>
+            <h4 className="mt-8 text-lg font-semibold text-white">Why live correction matters</h4>
+            <p className="mt-3 text-base leading-8 text-white/72">
+              Delayed feedback is one of the biggest reasons learners stay stuck. When a mistake is corrected at the exact moment it appears, the learner remembers the pattern, understands the fix, and can repeat it immediately. That short loop is more useful than general advice at the end of class because it connects the correction to the actual hesitation, pronunciation issue, or writing habit that caused it.
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-white/10 bg-white/5 p-7 backdrop-blur-md md:p-9">
+            <h3 className="font-serif text-3xl leading-tight text-white">What outcomes learners usually want</h3>
+            <p className="mt-4 text-base leading-8 text-white/72">
+              Most people come in with one of three goals. The first is an exam result: a higher IELTS band, a better PTE score, or a cleaner speaking performance under timed conditions. The second is professional fluency: speaking with more confidence in interviews, calls, and workplace discussions. The third is general communication comfort: reducing hesitation, improving sentence flow, and sounding more natural in daily English conversations. All three depend on practice that is specific, measurable, and responsive to the learner's real errors rather than generic course material.
+            </p>
+            <h4 className="mt-8 text-lg font-semibold text-white">What makes this different from batch coaching</h4>
+            <p className="mt-3 text-base leading-8 text-white/72">
+              Large coaching batches often leave quieter learners invisible. A founder-led model is more accountable because the person designing the program is also listening to the student, correcting the student, and reviewing the student’s written work. That consistency helps learners build trust faster and understand exactly what to improve between sessions.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+void SEOContentSection;
+
 function ContactSection() {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -1063,24 +1135,28 @@ function ContactSection() {
 
     setLoading(true);
 
-    emailjs.sendForm(
-      'service_2gsw3vb',
-      'template_ejyivw7',
-      form.current,
-      'UuNmf3kVCj3UHqC28'
-    ).then(
-      () => {
-        setLoading(false);
-        setSubmitted(true);
-        form.current?.reset();
-        globalThis.setTimeout?.(() => setSubmitted(false), 3000);
-      },
-      (error: { text?: string; message?: string }) => {
-        setLoading(false);
-        console.log('FAILED...', error.text);
-        alert(`Failed to send message. Error: ${error.text || error.message || JSON.stringify(error)}`);
-      }
-    );
+    import("@emailjs/browser")
+      .then(({ default: emailjs }) =>
+        emailjs.sendForm(
+          "service_2gsw3vb",
+          "template_ejyivw7",
+          form.current!,
+          "UuNmf3kVCj3UHqC28"
+        )
+      )
+      .then(
+        () => {
+          setLoading(false);
+          setSubmitted(true);
+          form.current?.reset();
+          globalThis.setTimeout?.(() => setSubmitted(false), 3000);
+        },
+        (error: { text?: string; message?: string }) => {
+          setLoading(false);
+          console.log("FAILED...", error.text);
+          alert(`Failed to send message. Error: ${error.text || error.message || JSON.stringify(error)}`);
+        }
+      );
   };
 
   const contactChips = [
@@ -1369,7 +1445,6 @@ export default function App() {
       <div className="min-h-screen">
         <NavBar />
         <main>
-          <h1 className="sr-only">Think in English - Premium IELTS, PTE & English Coaching</h1>
           <Hero />
           <TrustStrip />
           <AboutSection />
