@@ -322,7 +322,7 @@ function SectionIntro({
       variants={stagger}
       className={computeClassName()}
     >
-      <motion.p variants={fadeUp} className={`mb-4 text-xs font-extrabold uppercase tracking-[0.28em] ${eyebrowClass}`}>
+      <motion.p variants={fadeUp} className={`mb-4 text-sm font-extrabold uppercase tracking-[0.22em] ${eyebrowClass}`}>
         {eyebrow}
       </motion.p>
       <motion.h2 variants={fadeUp} className={`text-balance font-serif text-4xl leading-tight md:text-5xl ${titleClass}`}>
@@ -428,7 +428,7 @@ function Hero() {
       <div className={`relative ${pageContainer} grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-14`}>
         <motion.div initial="hidden" animate="show" variants={stagger} className="relative z-10">
           <motion.div variants={fadeUp} className="mb-10 border-t-2 border-white/20 pt-4 max-w-[280px]">
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/70">
+            <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-white/70">
               Founder-led mentoring &bull; Live online
             </p>
           </motion.div>
@@ -437,10 +437,8 @@ function Hero() {
             variants={fadeUp}
             className="text-balance max-w-3xl font-serif text-[2.55rem] leading-[1.02] tracking-[-0.02em] text-white sm:text-[3.2rem] lg:text-[5.5rem]"
           >
-            English isn't just grammar.
-            <span className="block mt-1">
-              It's how you{' '}<span className="text-gold">shape your voice.</span>
-            </span>
+            Speak English with
+            <span className="block mt-1 text-gold">clarity and confidence.</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-xl">
@@ -536,11 +534,11 @@ function Hero() {
 
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
               <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/50">Learning Model</p>
+                <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-white/50">Learning Model</p>
                 <p className="mt-1 text-sm font-bold text-white">Live classes / 1:1 & Group options</p>
               </div>
               <div className="text-right hidden sm:block">
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/50">Student Trust</p>
+                <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-white/50">Student Trust</p>
                 <p className="mt-1 text-sm font-bold text-white whitespace-nowrap">Rigorous, measured progress</p>
               </div>
             </div>
@@ -557,7 +555,7 @@ function TrustStrip() {
     <section className="pt-24 md:pt-32 pb-10">
       <div className={`${pageContainer}`}>
         <div className="border-b border-white/10 pb-6">
-          <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">What you can expect</p>
+          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/50">What you can expect</p>
           <h2 className="mt-4 font-serif text-3xl leading-tight text-white max-w-3xl">
             Most people just need someone to sit with them and untangle their hesitation.
           </h2>
@@ -670,7 +668,7 @@ function AboutSection() {
 
           <div className="grid gap-4 md:grid-cols-[1.2fr_.8fr]">
             <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
-              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">Who we train</p>
+              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/50">Who we train</p>
               <ul className="mt-5 space-y-4 text-sm leading-7 text-white/80">
                 {[
                   "12th graduates preparing for higher studies, interviews, and admissions.",
@@ -685,7 +683,7 @@ function AboutSection() {
               </ul>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
-              <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50">Teaching style</p>
+              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/50">Teaching style</p>
               <p className="mt-4 text-lg font-semibold leading-8 text-white">
                 Less lecture. More guidance, speaking correction, and course design built around the learner.
               </p>
@@ -895,7 +893,7 @@ function CoursesSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-28 mb-12 pl-6 md:pl-8 border-l-[3px] border-gold"
         >
-          <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-white/50 mb-4">Additional Help</p>
+          <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/50 mb-4">Additional Help</p>
           <h3 className="font-serif text-[1.75rem] md:text-[2.2rem] leading-tight text-white max-w-2xl">
             No long-term commitment. Just results.
           </h3>
@@ -952,7 +950,7 @@ function FormatSection() {
                 </div>
                 <h3 className="mt-8 font-serif text-3xl leading-tight text-white">{item.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-white/72">{item.text}</p>
-                <p className="mt-7 text-xs font-extrabold uppercase tracking-[0.2em] text-white/48">{item.meta}</p>
+                <p className="mt-7 text-sm font-extrabold uppercase tracking-[0.16em] text-white/48">{item.meta}</p>
               </motion.article>
             ))}
           </div>
@@ -964,7 +962,7 @@ function FormatSection() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="rounded-xl border border-border/30 bg-white/5 p-7 "
           >
-            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-white/50">Weekly flow</p>
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/50">Weekly flow</p>
             <div className="mt-8 space-y-5">
               {[
                 ["01", "Goal mapping", "Current level, target, and class format selection."],
@@ -1182,7 +1180,7 @@ function ContactSection() {
         <div className="overflow-hidden rounded-xl border border-border bg-navy shadow-sm">
           <div className="grid gap-0 lg:grid-cols-[.95fr_1.05fr]">
             <div className="p-8 text-white md:p-10 lg:p-12">
-              <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-white/52">Contact</p>
+              <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/52">Contact</p>
               <h2 className="mt-5 max-w-lg font-serif text-4xl leading-tight text-white md:text-[3.2rem]">
                 Start with a demo class and get the right recommendation.
               </h2>
@@ -1240,7 +1238,7 @@ function ContactSection() {
 
             <div className="bg-navy p-8 md:p-10 lg:p-12 lg:border-l lg:border-white/10">
               <div className="mx-auto max-w-xl">
-                <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-white/50">Direct access</p>
+                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/50">Direct access</p>
                 <p className="mt-4 text-3xl font-serif leading-tight text-white md:text-4xl">
                   Stop scrolling. Let's look at your current level and build a roadmap.
                 </p>
@@ -1260,7 +1258,7 @@ function ContactSection() {
                 </motion.a>
 
                 <form ref={form} onSubmit={handleSubmit} className="mt-10 grid gap-6">
-                  <p className="flex items-center gap-4 text-xs font-extrabold uppercase tracking-[0.16em] text-white/40">
+                  <p className="flex items-center gap-4 text-sm font-extrabold uppercase tracking-[0.12em] text-white/40">
                     <span className="flex-1 h-px bg-white/10" />
                     <span className="mx-3">Or send an email enquiry</span>
                     <span className="flex-1 h-px bg-white/10" />
@@ -1361,7 +1359,7 @@ function Footer() {
 
         <div className="grid gap-8 sm:grid-cols-2">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/50">Navigate</p>
+            <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-white/50">Navigate</p>
             <div className="mt-4 grid gap-3 text-sm font-semibold text-white/90">
               {[
                 ["About", "#about"],
@@ -1376,7 +1374,7 @@ function Footer() {
             </div>
           </div>
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/50">Connect</p>
+            <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-white/50">Connect</p>
             <div className="mt-4 grid gap-3 text-sm font-semibold text-white/90">
               {[
                 ["Instagram", "https://www.instagram.com/thinknspeak_in_english"],
@@ -1424,14 +1422,14 @@ function FloatingWhatsApp() {
       </motion.a>
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-navy/95 backdrop-blur-md px-4 py-3 md:hidden">
         <div className="mx-auto flex w-full max-w-md gap-3">
-          <a href="#contact" className="flex-1 rounded-full bg-white px-4 py-3 text-center text-sm font-extrabold uppercase tracking-[0.12em] text-navy">
+          <a href="#contact" className="flex-1 rounded-full bg-white px-4 py-3 text-center text-base font-extrabold uppercase tracking-[0.08em] text-navy">
             Book Demo
           </a>
           <a
             href="https://wa.me/919999999999"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 rounded-full border border-white/20 bg-white/5 px-4 py-3 text-center text-sm font-extrabold uppercase tracking-[0.12em] text-white"
+            className="flex-1 rounded-full border border-white/20 bg-white/5 px-4 py-3 text-center text-base font-extrabold uppercase tracking-[0.08em] text-white"
           >
             WhatsApp
           </a>
