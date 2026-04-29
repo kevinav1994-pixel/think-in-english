@@ -512,11 +512,11 @@ function Hero() {
             <div className="relative overflow-hidden rounded-xl">
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
               <img
-                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1200&q=80"
+                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1100&q=70"
                 srcSet="
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=800&q=80 800w,
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1200&q=80 1200w,
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1600&q=80 1600w
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=640&q=70 640w,
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=960&q=70 960w,
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1280&q=70 1280w
                 "
                 sizes="(max-width: 1024px) 100vw, 560px"
                 alt="Founder mentor of Think in English"
@@ -524,6 +524,7 @@ function Hero() {
                 height={1440}
                 loading="eager"
                 fetchPriority="high"
+                decoding="async"
                 className="h-[520px] w-full object-cover md:h-[620px] scale-105"
               />
               <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-navy/80 to-transparent p-6 pt-24 text-center md:text-left">
@@ -639,17 +640,18 @@ function AboutSection() {
           <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
             <div className="grid gap-6">
               <img
-                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80"
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=70"
                 srcSet="
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80 600w,
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80 900w,
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80 1200w
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=70 500w,
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=70 800w,
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=70 1000w
                 "
                 sizes="(max-width: 768px) 100vw, 420px"
                 alt="Live founder-led English coaching session"
                 width={900}
                 height={1200}
                 loading="lazy"
+                decoding="async"
                 className="h-[380px] w-full rounded-xl object-cover"
               />
               <div className="flex flex-col justify-between rounded-xl bg-white/5 border border-white/10 p-8">
@@ -1192,12 +1194,12 @@ function ContactSection() {
                 {contactChips.map(([label, value, href, icon]) => {
                   if (label === "WhatsApp & Call") {
                     return (
-                      <div key={label} className="flex gap-3">
+                      <div key={label} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                         <motion.a
                           href="https://wa.me/919999999999"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white"
+                          className="inline-flex min-h-12 w-full items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white sm:w-auto"
                         >
                           <span className="rounded-full bg-white/12 p-2">
                             <Icon path={icons.chat} className="h-4 w-4" />
@@ -1206,7 +1208,7 @@ function ContactSection() {
                         </motion.a>
                         <motion.a
                           href="tel:+919999999999"
-                          className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white"
+                          className="inline-flex min-h-12 w-full items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white sm:w-auto"
                         >
                           <span className="rounded-full bg-white/12 p-2">
                             <Icon path={icons.phone} className="h-4 w-4" />
@@ -1222,7 +1224,7 @@ function ContactSection() {
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white"
+                      className="inline-flex min-h-12 w-full items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white sm:w-auto"
                     >
                       <span className="rounded-full bg-white/12 p-2">
                         <Icon path={icons[icon]} className="h-4 w-4" />
@@ -1251,14 +1253,14 @@ function ContactSection() {
                   href="https://wa.me/918714278397?text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 flex w-fit items-center gap-3 rounded-full border border-gold bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md shadow-[0_12px_30px_rgba(1,54,72,0.08)] transition-all hover:bg-white/10"
+                  className="mt-8 flex min-h-12 w-full items-center justify-center gap-3 rounded-full border border-gold bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md shadow-[0_12px_30px_rgba(1,54,72,0.08)] transition-all hover:bg-white/10 sm:w-fit"
                 >
                   Message me on WhatsApp
                   <Icon path={icons.chat} className="h-[18px] w-[18px]" />
                 </motion.a>
 
                 <form ref={form} onSubmit={handleSubmit} className="mt-10 grid gap-6">
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40 flex items-center gap-4">
+                  <p className="flex items-center gap-4 text-xs font-extrabold uppercase tracking-[0.16em] text-white/40">
                     <span className="flex-1 h-px bg-white/10" />
                     <span className="mx-3">Or send an email enquiry</span>
                     <span className="flex-1 h-px bg-white/10" />
@@ -1344,13 +1346,13 @@ function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
                 aria-label={label}
               >
                 <Icon path={path} className="h-4 w-4" />
               </a>
             ))}
-            <a href="#contact" className="ml-1 inline-flex items-center gap-2 rounded-full border border-gold bg-transparent px-5 py-3 text-sm font-bold text-gold transition hover:bg-gold/10">
+            <a href="#contact" className="ml-1 inline-flex min-h-12 items-center gap-2 rounded-full border border-gold bg-transparent px-5 py-3 text-sm font-bold text-gold transition hover:bg-gold/10">
               Book Demo
               <Icon path={icons.arrow} className="h-4 w-4" />
             </a>
@@ -1367,7 +1369,7 @@ function Footer() {
                 ["Stories", "#testimonials"],
                 ["FAQ", "#faq"]
               ].map(([label, href]) => (
-                <a key={label} href={href} className="transition hover:text-white hover:translate-x-1">
+                <a key={label} href={href} className="py-1 transition hover:text-white hover:translate-x-1">
                   {label}
                 </a>
               ))}
@@ -1390,7 +1392,7 @@ function Footer() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="transition hover:text-white hover:translate-x-1"
+                  className="py-1 transition hover:text-white hover:translate-x-1"
                 >
                   {label}
                 </a>
