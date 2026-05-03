@@ -31,12 +31,12 @@ type IconName =
 type SectionIntroProps = Readonly<{
   eyebrow: string;
   title: string;
-  copy - : string;
-  align - : "left" | "center";
-  narrow - : boolean;
-  eyebrowClass - : string;
-  titleClass - : string;
-  copyClass - : string;
+  copy: string;
+  align?: "left" | "center";
+  narrow?: boolean;
+  eyebrowClass: string;
+  titleClass: string;
+  copyClass: string;
 }>;
 
 type TrustItem = {
@@ -54,16 +54,16 @@ type WhyItem = {
   copy: string;
   icon: IconName;
   tone: string;
-  featured - : boolean;
+  featured?: boolean;
 };
 
 type Course = {
   name: string;
   tag: string;
   outcome: string;
-  duration - : string;
-  price - : string;
-  cta - : string;
+  duration?: string;
+  price?: string;
+  cta?: string;
   accent: string;
 };
 
@@ -114,10 +114,10 @@ const trustItems: TrustItem[] = [
 ];
 
 const aboutStats: AboutStat[] = [
-  { value: "No Generic Communication Templates", note: "I don't give you pre-written interview answers or PDFs. We build your responses together so you can speak confidently in real situations - without memorizing scripts." },
-  { value: " Live Speaking Correction (Real-Time Feedback)", note: "If you hesitate, mispronounce, or lose clarity while speaking, I stop you immediately and correct it on the spot - so you improve faster, not later." },
-  { value: "Flexible Learning Pace (Based on Your Progress)", note: "How long does it take to improve communication skills - It depends. Some people improve in a week, others take months - we set the pace based on your actual progress." },
-  { value: "One-on-One or Small Group Coaching (No Crowded Classes)", note: "No crowded batches. I work with individuals or small groups so I can identify exactly where you hesitate and fix it personally." }
+  { value: "No Scripts, Real Results", note: "Build authentic responses for real-life situations—no generic templates or PDFs." },
+  { value: "Live Instant Feedback", note: "Get real-time corrections on pronunciation and clarity while you speak." },
+  { value: "Personalized Pace", note: "Flexible learning that matches your individual progress and speed." },
+  { value: "Elite Private Coaching", note: "One-on-one or small group sessions—no crowded batches, just focused attention." }
 ];
 
 const whyItems: WhyItem[] = [
@@ -244,27 +244,27 @@ const isE2E =
 
 const faqs = [
   [
-    "Do you just hand out IELTS and PTE templates - ",
+    "Do you just hand out IELTS and PTE templates ? ",
     "No. Templates only get you so far before the algorithm flags you. I teach you the structure, then correct exactly how you apply it so it sounds completely natural."
   ],
   [
-    "What if I'm extremely hesitant to speak in English - ",
+    "What if I'm extremely hesitant to speak in English ? ",
     "That's exactly why we do small groups or 1:1. You won't be judged. We will literally pause the class, fix the sentence structure together, and try again until you don't even have to think about it."
   ],
   [
-    "How is this different from local batch coaching - ",
+    "How is this different from local batch coaching ? ",
     "I teach every class. There are no junior tutors or 50-student batches where you never get to speak. If you write an essay, I am the one grading it line by line."
   ],
   [
-    "I work late. Can I still attend - ",
+    "I work late. Can I still attend? ",
     "Yes. Half my students are working professionals. We offer flexible early morning, late evening, and weekend slots so you don't have to miss meetings."
   ],
   [
-    "Can I choose one-to-one classes instead of group sessions - ",
+    "Can I choose one-to-one classes instead of group sessions ? ",
     "Absolutely. If you have severe time constraints or very specific weaknesses, 1:1 is the fastest way to fix them."
   ],
   [
-    "Can I try a class before committing - ",
+    "Can I try a class before committing ? ",
     "Yes. Book a free demo class. Let's look at where you currently are, and I'll tell you honestly exactly what it will take to hit your goal."
   ]
 ] as const;
@@ -291,7 +291,7 @@ const stagger = {
   }
 };
 
-function Icon({ path, className = "h-5 w-5" }: Readonly<{ path: string; className - : string }>) {
+function Icon({ path, className = "h-5 w-5" }: Readonly<{ path: string; className: string }>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d={path} />
@@ -311,7 +311,7 @@ function SectionIntro({
 }: Readonly<SectionIntroProps>) {
   const computeClassName = () => {
     if (align === "center") return "mx-auto max-w-3xl text-center";
-    return narrow  - "max-w-2xl" : "max-w-4xl";
+    return narrow ? "max-w-2xl" : "max-w-4xl";
   };
 
   return (
@@ -328,7 +328,7 @@ function SectionIntro({
       <motion.h2 variants={fadeUp} className={`text-balance font-serif text-4xl leading-tight md:text-5xl ${titleClass}`}>
         {title}
       </motion.h2>
-      {copy  - (
+      {copy ? (
         <motion.p variants={fadeUp} className={`mt-5 text-base leading-8 md:text-lg ${copyClass}`}>
           {copy}
         </motion.p>
@@ -358,14 +358,14 @@ function NavBar() {
 
   return (
     <motion.header
-      animate={{ paddingTop: scrolled  - 8 : 18, paddingBottom: scrolled  - 8 : 18 }}
+      animate={{ paddingTop: scrolled ? 8 : 18, paddingBottom: scrolled ? 8 : 18 }}
       className="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
     >
       <div className={pageContainer}>
         <div
           className={[
             "flex items-center justify-between rounded-full border px-4 transition-all duration-300 md:px-6",
-            scrolled  - "bg-navy/95 py-2 backdrop-blur-md border-white/10 shadow-sm" : "bg-transparent py-3 border-transparent"
+            scrolled ? "bg-navy/95 py-2 backdrop-blur-md border-white/10 shadow-sm" : "bg-transparent py-3 border-transparent"
           ].join(" ")}
         >
           <button onClick={() => window.scrollTo(0, 0)} className="font-serif text-2xl tracking-[0.01em] transition-colors text-white hover:opacity-80" aria-label="Think in English - Home">
@@ -395,12 +395,12 @@ function Hero() {
       <motion.div
         animate={
           isE2E
-             - { opacity: 0.55, scale: 1 }
+             ? { opacity: 0.55, scale: 1 }
             : { opacity: [0.45, 0.75, 0.45], scale: [1, 1.06, 1] }
         }
         transition={
           isE2E
-             - { duration: 0 }
+             ? { duration: 0 }
             : { duration: 8, repeat: Infinity, ease: "easeInOut" }
         }
         className="absolute left-[-12%] top-16 h-72 w-72 rounded-full bg-goldTint/50 blur-3xl"
@@ -408,17 +408,17 @@ function Hero() {
       <motion.div
         animate={
           isE2E
-             - { opacity: 0.55, scale: 1 }
+             ? { opacity: 0.55, scale: 1 }
             : { opacity: [0.42, 0.7, 0.42], scale: [1, 1.08, 1] }
         }
         transition={
           isE2E
-             - { duration: 0 }
+             ? { duration: 0 }
             : { duration: 9.5, repeat: Infinity, ease: "easeInOut" }
         }
         className="absolute right-[-8%] top-20 h-80 w-80 rounded-full bg-navy/80 blur-3xl"
       />
-      <motion.div style={isE2E  - undefined : { y: yParticle }} className="absolute inset-0 hidden md:block">
+      <motion.div style={isE2E ? undefined : { y: yParticle }} className="absolute inset-0 hidden md:block">
         <span className="absolute left-[10%] top-[22%] h-2.5 w-2.5 rounded-full bg-gold/40 blur-[1px]" />
         <span className="absolute left-[19%] top-[34%] h-1.5 w-1.5 rounded-full bg-white/20" />
         <span className="absolute right-[16%] top-[24%] h-3 w-3 rounded-full bg-goldTint/70 blur-[1px]" />
@@ -457,7 +457,7 @@ function Hero() {
             {["Live Classes", "Flexible Timings", "Personal Guidance"].map((item, index) => (
               <span key={item} className="flex items-center gap-3">
                 {item}
-                {index < 2  - <span className="text-gold">/</span> : null}
+                {index < 2 ? <span className="text-gold">/</span> : null}
               </span>
             ))}
           </motion.div>
@@ -501,20 +501,20 @@ function Hero() {
           className="relative"
         >
           <motion.div
-            style={isE2E  - undefined : { y: yImage }}
-            whileHover={isE2E  - undefined : { scale: 1.01, rotate: -0.5 }}
-            className="relative mx-auto max-w-[560px] rounded-xl border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-md origin-bottom"
+            style={isE2E ? undefined : { y: yImage }}
+            whileHover={isE2E ? undefined : { scale: 1.01, rotate: -0.5 }}
+            className="relative mx-auto max-w-[560px] rounded-xl border border-white/10 bg-white/5 p-4 shadow-2xl origin-bottom"
           >
-            <div className="absolute -left-7 top-12 hidden h-52 w-40 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md lg:block rotate-3" />
-            <div className="absolute -right-6 bottom-10 hidden h-48 w-36 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md lg:block" />
+            <div className="absolute -left-7 top-12 hidden h-52 w-40 rounded-xl border border-white/10 bg-white/5 lg:block rotate-3" />
+            <div className="absolute -right-6 bottom-10 hidden h-48 w-36 rounded-xl border border-white/10 bg-white/5 lg:block" />
             <div className="relative overflow-hidden rounded-xl">
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
               <img
-                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=1100&q=70"
+                src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1100&q=70"
                 srcSet="
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=640&q=70 640w,
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=960&q=70 960w,
-                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98 - auto=format&fit=crop&w=1280&q=70 1280w
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=640&q=70 640w,
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=960&q=70 960w,
+                  https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&w=1280&q=70 1280w
                 "
                 sizes="(max-width: 1024px) 100vw, 560px"
                 alt="Founder mentor of Think in English"
@@ -600,14 +600,8 @@ function AboutSection() {
               <p className="text-xl font-medium text-white md:text-[1.35rem]">
                 You can't lecture someone into fluency.
               </p>
-              <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
-                I didn't build this for mass communication. I built it after seeing capable people miss interviews and opportunities because they hesitated while speaking. Many knew the answers, but pressure, overthinking, or nervousness stopped them from saying it well. So this is simple - we help people speak better in real situations through practice, feedback, and confidence-building.
-              </p>
-              <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
-                English fluency isn't about memorizing vocabulary lists or grammar rules. It's about developing the mental agility to express complex ideas spontaneously. Whether you're preparing for IELTS speaking tests, job interviews, or everyday professional communication, the key is building confidence through targeted practice that addresses your specific hesitation points. Our founder-led approach ensures personalized attention to every student's unique challenges and goals.
-              </p>
-              <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70">
-                Some learners need a strict exam roadmap. Others need better workplace communication or more natural spoken English for interviews, presentations, and meetings. The coaching changes based on that outcome, but the method stays practical: observe the friction, correct it live, and repeat until the improvement becomes natural under pressure.
+              <p className="mt-5 max-w-xl text-[1.05rem] leading-[1.8] text-white/70 text-justify">
+                Fluency isn’t about memorizing rules—it’s about moving past hesitation and nerves to express ideas clearly. Instead of traditional lectures, this coaching focuses on real-time practice and instant feedback tailored to your goals, whether you are preparing for IELTS, an interview, or workplace communication. By identifying your specific speech patterns and correcting them on the spot, the program builds the genuine confidence needed to handle real-world pressure.
               </p>
             </div>
           </motion.div>
@@ -638,11 +632,11 @@ function AboutSection() {
           <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6">
             <div className="grid gap-6">
               <img
-                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=900&q=70"
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=70"
                 srcSet="
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=500&q=70 500w,
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=800&q=70 800w,
-                  https://images.unsplash.com/photo-1551836022-d5d88e9218df - auto=format&fit=crop&w=1000&q=70 1000w
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=70 500w,
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=70 800w,
+                  https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=70 1000w
                 "
                 sizes="(max-width: 768px) 100vw, 420px"
                 alt="Live founder-led English coaching session"
@@ -711,7 +705,7 @@ function WhySection() {
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {whyItems.map((item, index) => {
             const isWide = index === 0 || index === 3;
-            const spanClass = isWide  - "md:col-span-2 xl:col-span-2" : "col-span-1";
+            const spanClass = isWide ? "md:col-span-2 xl:col-span-2" : "col-span-1";
             return (
               <motion.article
                 key={item.title}
@@ -723,7 +717,7 @@ function WhySection() {
                 className={[
                   "group flex flex-col justify-between gap-8 rounded-xl border border-white/10 bg-white/5 p-8 sm:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.1)] backdrop-blur-md transition-all",
                   spanClass,
-                  isWide  - "lg:flex-row lg:items-center" : ""
+                  isWide ? "lg:flex-row lg:items-center" : ""
                 ].join(" ")}
               >
                 <div>
@@ -732,7 +726,7 @@ function WhySection() {
                   </div>
                   <h3 className="text-2xl font-serif leading-tight text-white lg:text-[1.8rem]">{item.title}</h3>
                 </div>
-                <div className={isWide  - "lg:max-w-md" : ""}>
+                <div className={isWide ? "lg:max-w-md" : ""}>
                   <p className="text-sm leading-8 text-white/70 md:text-base">{item.copy}</p>
                   <div className="mt-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.15em] text-white/50">
                     <span className="h-px w-10 bg-gold/50" />
@@ -846,7 +840,7 @@ function CourseCard({ course }: Readonly<{ course: Course }>) {
         <p className="mt-10 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">Directed correction</p>
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-6">
           <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">{course.price  - "Price" : "Duration"}</p>
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/40">{course.price ? "Price" : "Duration"}</p>
             <p className="mt-1 text-sm font-bold text-white">{course.price || course.duration}</p>
           </div>
           <div className="inline-flex items-center gap-2 text-sm font-bold text-white group">
@@ -1043,16 +1037,16 @@ function FAQSection() {
               >
                 <button
                   type="button"
-                  onClick={() => setOpen(isOpen  - -1 : index)}
+                  onClick={() => setOpen(isOpen ? -1 : index)}
                   className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left md:px-7"
                 >
                   <span className="text-base font-bold leading-7 text-white md:text-lg">{question}</span>
-                  <motion.span animate={{ rotate: isOpen  - 180 : 0 }} transition={{ duration: 0.3 }} className="text-white">
-                    <Icon path={isOpen  - "M5 12h14" : icons.plus} className="h-5 w-5" />
+                  <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="text-white">
+                    <Icon path={isOpen ? "M5 12h14" : icons.plus} className="h-5 w-5" />
                   </motion.span>
                 </button>
                 <AnimatePresence initial={false}>
-                  {isOpen  - (
+                  {isOpen ? (
                     <motion.div
                       key="content"
                       initial={{ height: 0, opacity: 0 }}
@@ -1080,7 +1074,8 @@ function ContactSection() {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    if (!form.current) return;
+    const currentForm = form.current;
+    if (!currentForm) return;
 
     setLoading(true);
 
@@ -1089,7 +1084,7 @@ function ContactSection() {
         emailjs.sendForm(
           "service_2gsw3vb",
           "template_ejyivw7",
-          form.current!,
+          currentForm,
           "UuNmf3kVCj3UHqC28"
         )
       )
@@ -1097,10 +1092,10 @@ function ContactSection() {
         () => {
           setLoading(false);
           setSubmitted(true);
-          form.current - .reset();
-          globalThis.setTimeout - .(() => setSubmitted(false), 3000);
+          currentForm.reset();
+          globalThis.setTimeout(() => setSubmitted(false), 3000);
         },
-        (error: { text - : string; message - : string }) => {
+        (error: { text: string; message: string }) => {
           setLoading(false);
           console.log("FAILED...", error.text);
           alert(`Failed to send message. Error: ${error.text || error.message || JSON.stringify(error)}`);
@@ -1120,7 +1115,7 @@ function ContactSection() {
   };
 
   const getButtonIcon = () => {
-    return submitted  - icons.check : icons.arrow;
+    return submitted ? icons.check : icons.arrow;
   };
 
   return (
@@ -1169,8 +1164,8 @@ function ContactSection() {
                     <motion.a
                       key={label}
                       href={href}
-                      target={href.startsWith("http")  - "_blank" : undefined}
-                      rel={href.startsWith("http")  - "noopener noreferrer" : undefined}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                       className="inline-flex min-h-12 w-full items-center gap-3 rounded-full border border-border/30 bg-white/10 px-6 py-4 text-sm font-semibold text-white sm:w-auto"
                     >
                       <span className="rounded-full bg-white/12 p-2">
@@ -1197,7 +1192,7 @@ function ContactSection() {
 
                 <motion.a
 
-                  href="https://wa.me/918714278397 - text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
+                  href="https://wa.me/918714278397?text=Hi%2C%20I%20would%20like%20to%20book%20a%20demo%20class.%20Please%20share%20available%20slots."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 flex min-h-12 w-full items-center justify-center gap-3 rounded-full border border-gold bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-md shadow-[0_12px_30px_rgba(1,54,72,0.08)] transition-all hover:bg-white/10 sm:w-fit"
@@ -1225,7 +1220,7 @@ function ContactSection() {
                         type={type}
                         placeholder={placeholder}
                         required
-                        onInput={name === "user_phone"  - (e) => { e.currentTarget.value = e.currentTarget.value.replace(/[^0-9+]/g, '') } : undefined}
+                        onInput={name === "user_phone" ? (e) => { e.currentTarget.value = e.currentTarget.value.replace(/[^0-9+]/g, '') } : undefined}
                         className="rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-sm font-medium text-white placeholder-white/40 outline-none transition-all focus:-translate-y-[2px] focus:border-gold focus:shadow-[0_8px_20px_rgba(182,144,99,0.12)]"
                       />
                     </label>
@@ -1247,8 +1242,8 @@ function ContactSection() {
                     disabled={loading || submitted}
                     className={[
                       "mt-4 inline-flex items-center justify-center gap-3 rounded-full px-8 py-5 text-[13px] font-extrabold uppercase tracking-[0.16em] shadow-sm transition-colors",
-                      submitted  - "bg-white text-navy" : "bg-gold text-white hover:bg-gold/90",
-                      loading  - "opacity-70 cursor-not-allowed" : ""
+                      submitted ? "bg-white text-navy" : "bg-gold text-white hover:bg-gold/90",
+                      loading ? "opacity-70 cursor-not-allowed" : ""
                     ].join(" ")}
                   >
                     {getButtonText()}
@@ -1271,85 +1266,37 @@ function Footer() {
   const socialIcons = [
     ["Instagram", "https://www.instagram.com/thinknspeak_in_english", "M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2zM12 7a5 5 0 100 10 5 5 0 000-10z"],
     ["YouTube", "https://www.youtube.com/@thinkinenglish1111", "M22 12s0-3.4-.4-5c-.2-1.1-1.1-2-2.2-2.2C17.8 4.4 12 4.4 12 4.4s-5.8 0-7.4.4c-1.1.2-2 1.1-2.2 2.2C2 8.6 2 12 2 12s0 3.4.4 5c.2 1.1 1.1 2 2.2 2.2 1.6.4 7.4.4 7.4.4s5.8 0 7.4-.4c1.1-.2 2-1.1 2.2-2.2.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"],
-    ["Twitter", "https://twitter.com/thinkinenglish", "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"],
-    ["LinkedIn", "https://www.linkedin.com/company/thinkinenglish", "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"],
     ["Facebook", "https://www.facebook.com/thinkinenglish", "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"]
   ] as const;
 
   return (
     <footer className="border-t border-white/10 bg-navy py-12">
-      <div className={`${pageContainer} grid gap-8 lg:grid-cols-[1.2fr_.8fr]`}>
-        <div>
-          <button onClick={() => window.scrollTo(0, 0)} className="font-serif text-3xl text-white hover:opacity-80" aria-label="Think in English - Home">
-            <span className="text-gold">Think</span> in English
-          </button>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-white/70">
-            Premium, founder-led online English coaching for exam performance and practical confidence. Designed to feel serious, warm, and result-oriented from the first enquiry to the final class.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+      <div className={pageContainer}>
+        <div className="grid gap-8 md:grid-cols-2 items-center">
+          <div>
+            <button onClick={() => window.scrollTo(0, 0)} className="font-serif text-2xl text-white hover:opacity-80" aria-label="Think in English - Home">
+              <span className="text-gold">Think</span> in English
+            </button>
+            <p className="mt-2 text-sm text-white/70">Unravel your journey of English</p>
+          </div>
+          <div className="flex justify-start md:justify-end gap-3">
             {socialIcons.map(([label, href, path]) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
                 aria-label={label}
               >
                 <Icon path={path} className="h-4 w-4" />
               </a>
             ))}
-            <a href="#contact" className="ml-1 inline-flex min-h-12 items-center gap-2 rounded-full border border-gold bg-transparent px-5 py-3 text-sm font-bold text-gold transition hover:bg-gold/10">
-              Book Demo
-              <Icon path={icons.arrow} className="h-4 w-4" />
-            </a>
           </div>
         </div>
-
-        <div className="grid gap-8 sm:grid-cols-2">
-          <div>
-            <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-white/50">Navigate</p>
-            <div className="mt-4 grid gap-3 text-sm font-semibold text-white/90">
-              {[
-                ["About", "#about"],
-                ["Courses", "#courses"],
-                ["Stories", "#testimonials"],
-                ["FAQ", "#faq"]
-              ].map(([label, href]) => (
-                <a key={label} href={href} className="py-1 transition hover:text-white hover:translate-x-1">
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-white/50">Connect</p>
-            <div className="mt-4 grid gap-3 text-sm font-semibold text-white/90">
-              {[
-                ["Instagram", "https://www.instagram.com/thinknspeak_in_english"],
-                ["YouTube", "https://www.youtube.com/@thinkinenglish1111"],
-                ["Twitter", "https://twitter.com/thinkinenglish"],
-                ["LinkedIn", "https://www.linkedin.com/company/thinkinenglish"],
-                ["Facebook", "https://www.facebook.com/thinkinenglish"],
-                ["WhatsApp", "https://wa.me/919999999999"],
-                ["Email", "mailto:hello@thinkinenglish.in"]
-              ].map(([label, href]) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http")  - "_blank" : undefined}
-                  rel={href.startsWith("http")  - "noopener noreferrer" : undefined}
-                  className="py-1 transition hover:text-white hover:translate-x-1"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
+        <div className="mt-8 border-t border-white/10 pt-6 text-center text-sm text-white/50">
+          Copyright 2024 Think in English. Unravel Your Journey of English.
         </div>
-      </div>
-      <div className={`${pageContainer} mt-8 border-t border-white/10 pt-6 text-sm text-white/50`}>
-        Copyright 2024 Think in English. Unravel Your Journey of English.
       </div>
     </footer>
   );
